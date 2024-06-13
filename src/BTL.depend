@@ -1,0 +1,1499 @@
+# depslib dependency file v1.0
+1652262568 source:e:\btl\bigbang.cpp
+	"BigBang.h"
+
+1652262894 e:\btl\bigbang.h
+	"LTexture.h"
+
+1652263132 e:\btl\ltexture.h
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+	"Constant.h"
+
+1652263013 e:\btl\constant.h
+
+1652262598 source:e:\btl\checkcollision.cpp
+	"CheckCollision.h"
+
+1652262911 e:\btl\checkcollision.h
+	<SDL.h>
+
+1652262631 source:e:\btl\compare.cpp
+	<iostream>
+	<SDL.h>
+
+1652262852 source:e:\btl\enemybullet.cpp
+	"EnemyBullet.h"
+
+1652268705 e:\btl\enemybullet.h
+	"Object.h"
+
+1652263183 e:\btl\object.h
+	"LTexture.h"
+
+1652262856 source:e:\btl\enemyplane.cpp
+	<sstream>
+	"EnemyPlane.h"
+
+1652268718 e:\btl\enemyplane.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+	"BigBang.h"
+
+1652262859 source:e:\btl\enemyplane2.cpp
+	<sstream>
+	"EnemyPlane2.h"
+
+1652268705 e:\btl\enemyplane2.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+
+1652262491 source:e:\btl\hp.cpp
+	"HP.h"
+
+1652268705 e:\btl\hp.h
+	"Object.h"
+
+1652269461 source:e:\btl\init.cpp
+	<iostream>
+	"init.h"
+
+1652262832 source:e:\btl\ltexture.cpp
+	<iostream>
+	"LTexture.h"
+	<SDL_image.h>
+
+1652262827 source:e:\btl\mybullet.cpp
+	"MyBullet.h"
+
+1652263148 e:\btl\mybullet.h
+	"Object.h"
+
+1652262830 source:e:\btl\myplane.cpp
+	"MyPlane.h"
+
+1652268705 e:\btl\myplane.h
+	<iostream>
+	<stdio.h>
+	<vector>
+	<sstream>
+	"Object.h"
+	"MyBullet.h"
+	"BigBang.h"
+
+1652262340 source:e:\btl\object.cpp
+	"Object.h"
+
+1652263715 e:\btl\init.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652278736 source:e:\btl\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	"init.h"
+	"close.h"
+	"LTexture.h"
+	"Menu.h"
+	"Constant.h"
+	"Play.h"
+
+1652262948 e:\btl\compare.h
+
+1652269582 e:\btl\play.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	"Constant.h"
+	"init.h"
+	"LTexture.h"
+	"Object.h"
+	"MyBullet.h"
+	"MyPlane.h"
+	"EnemyBullet.h"
+	"EnemyPlane.h"
+	"EnemyPlane2.h"
+	"HP.h"
+	"BigBang.h"
+	"Compare.h"
+	"CheckCollision.h"
+
+1652269582 source:e:\btl\play.cpp
+	<iostream>
+	"Play.h"
+
+1652274523 e:\btl\value.h
+	"LTexture.h"
+
+1652269290 source:e:\btl\close.cpp
+	<iostream>
+	"init.h"
+
+1652269332 e:\btl\close.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652279135 e:\btl\menu.h
+	"LTexture.h"
+	"init.h"
+	"close.h"
+	"Play.h"
+
+1652278677 source:e:\btl\menu.cpp
+	<iostream>
+	"Menu.h"
+
+1652278759 source:e:\btl\home.cpp
+	<iostream>
+	"Menu.h"
+
+1652262568 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\bigbang.cpp
+	"BigBang.h"
+
+1652262894 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\bigbang.h
+	"LTexture.h"
+
+1652263132 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\ltexture.h
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+	"Constant.h"
+
+1652263013 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\constant.h
+
+1652262598 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\checkcollision.cpp
+	"CheckCollision.h"
+
+1652262911 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\checkcollision.h
+	<SDL.h>
+
+1652269290 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\close.cpp
+	<iostream>
+	"init.h"
+
+1652263715 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\init.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652262631 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\compare.cpp
+	<iostream>
+	<SDL.h>
+
+1652262852 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\enemybullet.cpp
+	"EnemyBullet.h"
+
+1652268705 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\enemybullet.h
+	"Object.h"
+
+1652263183 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\object.h
+	"LTexture.h"
+
+1652262856 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\enemyplane.cpp
+	<sstream>
+	"EnemyPlane.h"
+
+1652268718 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\enemyplane.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+	"BigBang.h"
+
+1652262859 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\enemyplane2.cpp
+	<sstream>
+	"EnemyPlane2.h"
+
+1652268705 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\enemyplane2.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+
+1652279229 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\home.cpp
+	<iostream>
+	"Menu.h"
+
+1652279135 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\menu.h
+	"LTexture.h"
+	"init.h"
+	"close.h"
+	"Play.h"
+
+1652269332 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\close.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652269582 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\play.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	"Constant.h"
+	"init.h"
+	"LTexture.h"
+	"Object.h"
+	"MyBullet.h"
+	"MyPlane.h"
+	"EnemyBullet.h"
+	"EnemyPlane.h"
+	"EnemyPlane2.h"
+	"HP.h"
+	"BigBang.h"
+	"Compare.h"
+	"CheckCollision.h"
+
+1652263148 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\mybullet.h
+	"Object.h"
+
+1652268705 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\myplane.h
+	<iostream>
+	<stdio.h>
+	<vector>
+	<sstream>
+	"Object.h"
+	"MyBullet.h"
+	"BigBang.h"
+
+1652268705 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\hp.h
+	"Object.h"
+
+1652262948 c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\compare.h
+
+1652262491 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\hp.cpp
+	"HP.h"
+
+1652269461 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\init.cpp
+	<iostream>
+	"init.h"
+
+1652262832 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\ltexture.cpp
+	<iostream>
+	"LTexture.h"
+	<SDL_image.h>
+
+1652278677 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\menu.cpp
+	<iostream>
+	"Menu.h"
+
+1652262827 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\mybullet.cpp
+	"MyBullet.h"
+
+1652262830 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\myplane.cpp
+	"MyPlane.h"
+
+1652262340 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\object.cpp
+	"Object.h"
+
+1652269582 source:c:\users\admin\onedrive - vnu.edu.vn\desktop\btl\play.cpp
+	<iostream>
+	"Play.h"
+
+1652262568 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\bigbang.cpp
+	"BigBang.h"
+
+1652262894 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\bigbang.h
+	"LTexture.h"
+
+1652263132 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\ltexture.h
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+	"Constant.h"
+
+1652263013 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\constant.h
+
+1652262598 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\checkcollision.cpp
+	"CheckCollision.h"
+
+1652262911 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\checkcollision.h
+	<SDL.h>
+
+1652337051 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\close.cpp
+	<iostream>
+	"init.h"
+
+1652263715 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\init.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652262631 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\compare.cpp
+	<iostream>
+	<SDL.h>
+
+1652262852 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\enemybullet.cpp
+	"EnemyBullet.h"
+
+1652268705 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\enemybullet.h
+	"Object.h"
+
+1652263183 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\object.h
+	"LTexture.h"
+
+1652262856 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\enemyplane.cpp
+	<sstream>
+	"EnemyPlane.h"
+
+1652268718 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\enemyplane.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+	"BigBang.h"
+
+1652262859 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\enemyplane2.cpp
+	<sstream>
+	"EnemyPlane2.h"
+
+1652268705 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\enemyplane2.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+
+1652348419 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\home.cpp
+	<iostream>
+	"Menu.h"
+
+1652347886 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\menu.h
+	"LTexture.h"
+	"init.h"
+	"close.h"
+	"Play.h"
+
+1652337051 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\close.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652345267 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\play.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	"Constant.h"
+	"init.h"
+	"LTexture.h"
+	"Object.h"
+	"MyBullet.h"
+	"MyPlane.h"
+	"EnemyBullet.h"
+	"EnemyPlane.h"
+	"EnemyPlane2.h"
+	"HP.h"
+	"BigBang.h"
+	"Compare.h"
+	"CheckCollision.h"
+
+1652263148 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\mybullet.h
+	"Object.h"
+
+1652268705 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\myplane.h
+	<iostream>
+	<stdio.h>
+	<vector>
+	<sstream>
+	"Object.h"
+	"MyBullet.h"
+	"BigBang.h"
+
+1652268705 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\hp.h
+	"Object.h"
+
+1652262948 c:\uet\lap trinh nang cao\c++\hoc sdl\btl\compare.h
+
+1652262491 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\hp.cpp
+	"HP.h"
+
+1652269461 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\init.cpp
+	<iostream>
+	"init.h"
+
+1652346808 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\ltexture.cpp
+	<iostream>
+	"LTexture.h"
+	<SDL_image.h>
+
+1652348015 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\menu.cpp
+	<iostream>
+	"Menu.h"
+
+1652262827 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\mybullet.cpp
+	"MyBullet.h"
+
+1652262830 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\myplane.cpp
+	"MyPlane.h"
+
+1652262340 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\object.cpp
+	"Object.h"
+
+1652346931 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\play.cpp
+	<iostream>
+	"Play.h"
+	"Menu.h"
+
+1652344828 source:c:\uet\lap trinh nang cao\c++\hoc sdl\btl\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	"init.h"
+	"close.h"
+	"LTexture.h"
+	"Menu.h"
+	"Constant.h"
+	"Play.h"
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\checkcollision.cpp
+	"CheckCollision.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\checkcollision.h
+	<SDL.h>
+
+1653016395 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\close.cpp
+	<iostream>
+	"init.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\init.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\compare.cpp
+	<iostream>
+	<SDL.h>
+
+1653016169 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\home.cpp
+	<iostream>
+	<fstream>
+	"Menu.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\menu.h
+	"LTexture.h"
+	"init.h"
+	"close.h"
+	"Play.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\ltexture.h
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+	"Constant.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\constant.h
+
+1653016395 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\close.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\play.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	"Constant.h"
+	"init.h"
+	"LTexture.h"
+	"Object.h"
+	"MyBullet.h"
+	"MyPlane.h"
+	"EnemyBullet.h"
+	"EnemyPlane.h"
+	"EnemyPlane2.h"
+	"HP.h"
+	"BigBang.h"
+	"Compare.h"
+	"CheckCollision.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\object.h
+	"LTexture.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\mybullet.h
+	"Object.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\myplane.h
+	<stdio.h>
+	<vector>
+	<sstream>
+	"Object.h"
+	"MyBullet.h"
+	"BigBang.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\bigbang.h
+	"LTexture.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\enemybullet.h
+	"Object.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\enemyplane.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+	"BigBang.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\enemyplane2.h
+	<vector>
+	<SDL.h>
+	"EnemyBullet.h"
+	"Object.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\hp.h
+	"Object.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\compare.h
+
+1653016204 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\hp.cpp
+	"HP.h"
+
+1653016169 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\init.cpp
+	<iostream>
+	"init.h"
+
+1653016395 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	<algorithm>
+	"init.h"
+	"close.h"
+	"LTexture.h"
+	"Menu.h"
+	"Constant.h"
+	"Play.h"
+
+1652794057 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\menu.cpp
+	<iostream>
+	"Menu.h"
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\object.cpp
+	"Object.h"
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\bigbang.cpp
+	"BigBang.h"
+
+1653016204 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\enemybullet.cpp
+	"EnemyBullet.h"
+	<iostream>
+
+1653016204 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\enemyplane.cpp
+	<sstream>
+	"EnemyPlane.h"
+
+1653016204 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\enemyplane2.cpp
+	<sstream>
+	<iostream>
+	"EnemyPlane2.h"
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\ltexture.cpp
+	<iostream>
+	"LTexture.h"
+	<SDL_image.h>
+
+1653016204 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\mybullet.cpp
+	"MyBullet.h"
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\myplane.cpp
+	"MyPlane.h"
+
+1653016320 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\btl\play.cpp
+	<iostream>
+	<algorithm>
+	<fstream>
+	"Play.h"
+	"Menu.h"
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\bigbang.cpp
+	"BigBang.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\bigbang.h
+	"LTexture.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\ltexture.h
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+	"Constant.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\constant.h
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\checkcollision.cpp
+	"CheckCollision.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\checkcollision.h
+	<SDL.h>
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\close.cpp
+	<iostream>
+	"init.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\init.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\compare.cpp
+	<iostream>
+	<SDL.h>
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\enemybullet.cpp
+	"EnemyBullet.h"
+	<iostream>
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\enemybullet.h
+	"Object.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\object.h
+	"LTexture.h"
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\enemyplane.cpp
+	<sstream>
+	"EnemyPlane.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\enemyplane.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+	"BigBang.h"
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\enemyplane2.cpp
+	<sstream>
+	<iostream>
+	"EnemyPlane2.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\enemyplane2.h
+	<vector>
+	<SDL.h>
+	"EnemyBullet.h"
+	"Object.h"
+
+1652840433 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\home.cpp
+	<iostream>
+	<fstream>
+	"Menu.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\menu.h
+	"LTexture.h"
+	"init.h"
+	"close.h"
+	"Play.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\close.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\play.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	"Constant.h"
+	"init.h"
+	"LTexture.h"
+	"Object.h"
+	"MyBullet.h"
+	"MyPlane.h"
+	"EnemyBullet.h"
+	"EnemyPlane.h"
+	"EnemyPlane2.h"
+	"HP.h"
+	"BigBang.h"
+	"Compare.h"
+	"CheckCollision.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\mybullet.h
+	"Object.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\myplane.h
+	<stdio.h>
+	<vector>
+	<sstream>
+	"Object.h"
+	"MyBullet.h"
+	"BigBang.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\hp.h
+	"Object.h"
+
+1652837793 c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\compare.h
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\hp.cpp
+	"HP.h"
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\init.cpp
+	<iostream>
+	"init.h"
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\ltexture.cpp
+	<iostream>
+	"LTexture.h"
+	<SDL_image.h>
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	<algorithm>
+	"init.h"
+	"close.h"
+	"LTexture.h"
+	"Menu.h"
+	"Constant.h"
+	"Play.h"
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\menu.cpp
+	<iostream>
+	"Menu.h"
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\mybullet.cpp
+	"MyBullet.h"
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\myplane.cpp
+	"MyPlane.h"
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\object.cpp
+	"Object.h"
+
+1652837793 source:c:\users\admin\documents\github\nhom15-2122ii_int2215_22\btl\play.cpp
+	<iostream>
+	<algorithm>
+	<fstream>
+	"Play.h"
+	"Menu.h"
+
+1652837793 source:e:\cs plane\cs plane\bigbang.cpp
+	"BigBang.h"
+
+1652837793 e:\cs plane\cs plane\bigbang.h
+	"LTexture.h"
+
+1652837793 e:\cs plane\cs plane\ltexture.h
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+	"Constant.h"
+
+1652837793 e:\cs plane\cs plane\constant.h
+
+1652837793 source:e:\cs plane\cs plane\checkcollision.cpp
+	"CheckCollision.h"
+
+1652837793 e:\cs plane\cs plane\checkcollision.h
+	<SDL.h>
+
+1653016395 source:e:\cs plane\cs plane\close.cpp
+	<iostream>
+	"init.h"
+
+1652837793 e:\cs plane\cs plane\init.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652837793 source:e:\cs plane\cs plane\compare.cpp
+	<iostream>
+	<SDL.h>
+
+1653016204 source:e:\cs plane\cs plane\enemybullet.cpp
+	"EnemyBullet.h"
+	<iostream>
+
+1652837793 e:\cs plane\cs plane\enemybullet.h
+	"Object.h"
+
+1652837793 e:\cs plane\cs plane\object.h
+	"LTexture.h"
+
+1653016204 source:e:\cs plane\cs plane\enemyplane.cpp
+	<sstream>
+	"EnemyPlane.h"
+
+1652837793 e:\cs plane\cs plane\enemyplane.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+	"BigBang.h"
+
+1653016204 source:e:\cs plane\cs plane\enemyplane2.cpp
+	<sstream>
+	<iostream>
+	"EnemyPlane2.h"
+
+1652837793 e:\cs plane\cs plane\enemyplane2.h
+	<vector>
+	<SDL.h>
+	"EnemyBullet.h"
+	"Object.h"
+
+1653127062 source:e:\cs plane\cs plane\home.cpp
+	<iostream>
+	<fstream>
+	"Menu.h"
+
+1653123888 e:\cs plane\cs plane\menu.h
+	"LTexture.h"
+	"init.h"
+	"close.h"
+	"Play.h"
+
+1653016395 e:\cs plane\cs plane\close.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652837793 e:\cs plane\cs plane\play.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	"Constant.h"
+	"init.h"
+	"LTexture.h"
+	"Object.h"
+	"MyBullet.h"
+	"MyPlane.h"
+	"EnemyBullet.h"
+	"EnemyPlane.h"
+	"EnemyPlane2.h"
+	"HP.h"
+	"BigBang.h"
+	"Compare.h"
+	"CheckCollision.h"
+
+1652837793 e:\cs plane\cs plane\mybullet.h
+	"Object.h"
+
+1652837793 e:\cs plane\cs plane\myplane.h
+	<stdio.h>
+	<vector>
+	<sstream>
+	"Object.h"
+	"MyBullet.h"
+	"BigBang.h"
+
+1652837793 e:\cs plane\cs plane\hp.h
+	"Object.h"
+
+1652837793 e:\cs plane\cs plane\compare.h
+
+1653016204 source:e:\cs plane\cs plane\hp.cpp
+	"HP.h"
+
+1653016169 source:e:\cs plane\cs plane\init.cpp
+	<iostream>
+	"init.h"
+
+1652837793 source:e:\cs plane\cs plane\ltexture.cpp
+	<iostream>
+	"LTexture.h"
+	<SDL_image.h>
+
+1653016395 source:e:\cs plane\cs plane\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	<algorithm>
+	"init.h"
+	"close.h"
+	"LTexture.h"
+	"Menu.h"
+	"Constant.h"
+	"Play.h"
+
+1653016204 source:e:\cs plane\cs plane\mybullet.cpp
+	"MyBullet.h"
+
+1652837793 source:e:\cs plane\cs plane\myplane.cpp
+	"MyPlane.h"
+
+1652837793 source:e:\cs plane\cs plane\object.cpp
+	"Object.h"
+
+1653124615 source:e:\cs plane\cs plane\play.cpp
+	<iostream>
+	<algorithm>
+	<fstream>
+	"Play.h"
+	"Menu.h"
+
+1653127787 source:e:\cs plane\cs plane\menu.cpp
+	<iostream>
+	"Menu.h"
+
+1653131334 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\bigbang.cpp
+	"BigBang.h"
+
+1653131348 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\bigbang.h
+	"LTexture.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\ltexture.h
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+	"Constant.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\constant.h
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\checkcollision.cpp
+	"CheckCollision.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\checkcollision.h
+	<SDL.h>
+
+1653016395 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\close.cpp
+	<iostream>
+	"init.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\init.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\compare.cpp
+	<iostream>
+	<SDL.h>
+
+1653131334 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\enemybullet.cpp
+	"EnemyBullet.h"
+	<iostream>
+
+1653131334 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\enemybullet.h
+	"Object.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\object.h
+	"LTexture.h"
+
+1653131358 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\enemyplane.cpp
+	<sstream>
+	"EnemyPlane.h"
+
+1653131334 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\enemyplane.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+	"BigBang.h"
+
+1653131364 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\enemyplane2.cpp
+	<sstream>
+	<iostream>
+	"EnemyPlane2.h"
+
+1653131334 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\enemyplane2.h
+	<vector>
+	<SDL.h>
+	"EnemyBullet.h"
+	"Object.h"
+
+1653130817 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\home.cpp
+	<iostream>
+	<fstream>
+	"Menu.h"
+
+1653123888 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\menu.h
+	"LTexture.h"
+	"init.h"
+	"close.h"
+	"Play.h"
+
+1653016395 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\close.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\play.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	"Constant.h"
+	"init.h"
+	"LTexture.h"
+	"Object.h"
+	"MyBullet.h"
+	"MyPlane.h"
+	"EnemyBullet.h"
+	"EnemyPlane.h"
+	"EnemyPlane2.h"
+	"HP.h"
+	"BigBang.h"
+	"Compare.h"
+	"CheckCollision.h"
+
+1653131334 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\mybullet.h
+	"Object.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\myplane.h
+	<stdio.h>
+	<vector>
+	<sstream>
+	"Object.h"
+	"MyBullet.h"
+	"BigBang.h"
+
+1653131352 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\hp.h
+	"Object.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\compare.h
+
+1653131334 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\hp.cpp
+	"HP.h"
+
+1653016169 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\init.cpp
+	<iostream>
+	"init.h"
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\ltexture.cpp
+	<iostream>
+	"LTexture.h"
+	<SDL_image.h>
+
+1653016395 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	<algorithm>
+	"init.h"
+	"close.h"
+	"LTexture.h"
+	"Menu.h"
+	"Constant.h"
+	"Play.h"
+
+1653127787 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\menu.cpp
+	<iostream>
+	"Menu.h"
+
+1653131334 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\mybullet.cpp
+	"MyBullet.h"
+
+1653131369 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\myplane.cpp
+	"MyPlane.h"
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\object.cpp
+	"Object.h"
+
+1653131398 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\21 - 5 - 2022\cs plane\play.cpp
+	<iostream>
+	<algorithm>
+	<fstream>
+	"Play.h"
+	"Menu.h"
+
+1653131334 source:e:\h\cs plane\cs plane\bigbang.cpp
+	"BigBang.h"
+
+1653131348 e:\h\cs plane\cs plane\bigbang.h
+	"LTexture.h"
+
+1652837793 e:\h\cs plane\cs plane\ltexture.h
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+	"Constant.h"
+
+1652837793 e:\h\cs plane\cs plane\constant.h
+
+1652837793 source:e:\h\cs plane\cs plane\checkcollision.cpp
+	"CheckCollision.h"
+
+1652837793 e:\h\cs plane\cs plane\checkcollision.h
+	<SDL.h>
+
+1653016395 source:e:\h\cs plane\cs plane\close.cpp
+	<iostream>
+	"init.h"
+
+1652837793 e:\h\cs plane\cs plane\init.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652837793 source:e:\h\cs plane\cs plane\compare.cpp
+	<iostream>
+	<SDL.h>
+
+1653131334 source:e:\h\cs plane\cs plane\enemybullet.cpp
+	"EnemyBullet.h"
+	<iostream>
+
+1653131334 e:\h\cs plane\cs plane\enemybullet.h
+	"Object.h"
+
+1652837793 e:\h\cs plane\cs plane\object.h
+	"LTexture.h"
+
+1653132118 source:e:\h\cs plane\cs plane\enemyplane.cpp
+	<sstream>
+	"EnemyPlane.h"
+
+1653131334 e:\h\cs plane\cs plane\enemyplane.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+	"BigBang.h"
+
+1653131364 source:e:\h\cs plane\cs plane\enemyplane2.cpp
+	<sstream>
+	<iostream>
+	"EnemyPlane2.h"
+
+1653131334 e:\h\cs plane\cs plane\enemyplane2.h
+	<vector>
+	<SDL.h>
+	"EnemyBullet.h"
+	"Object.h"
+
+1653136522 source:e:\h\cs plane\cs plane\home.cpp
+	<iostream>
+	<fstream>
+	"Menu.h"
+
+1653123888 e:\h\cs plane\cs plane\menu.h
+	"LTexture.h"
+	"init.h"
+	"close.h"
+	"Play.h"
+
+1653016395 e:\h\cs plane\cs plane\close.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652837793 e:\h\cs plane\cs plane\play.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	"Constant.h"
+	"init.h"
+	"LTexture.h"
+	"Object.h"
+	"MyBullet.h"
+	"MyPlane.h"
+	"EnemyBullet.h"
+	"EnemyPlane.h"
+	"EnemyPlane2.h"
+	"HP.h"
+	"BigBang.h"
+	"Compare.h"
+	"CheckCollision.h"
+
+1653131334 e:\h\cs plane\cs plane\mybullet.h
+	"Object.h"
+
+1652837793 e:\h\cs plane\cs plane\myplane.h
+	<stdio.h>
+	<vector>
+	<sstream>
+	"Object.h"
+	"MyBullet.h"
+	"BigBang.h"
+
+1653131352 e:\h\cs plane\cs plane\hp.h
+	"Object.h"
+
+1652837793 e:\h\cs plane\cs plane\compare.h
+
+1653131334 source:e:\h\cs plane\cs plane\hp.cpp
+	"HP.h"
+
+1653016169 source:e:\h\cs plane\cs plane\init.cpp
+	<iostream>
+	"init.h"
+
+1652837793 source:e:\h\cs plane\cs plane\ltexture.cpp
+	<iostream>
+	"LTexture.h"
+	<SDL_image.h>
+
+1653016395 source:e:\h\cs plane\cs plane\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	<algorithm>
+	"init.h"
+	"close.h"
+	"LTexture.h"
+	"Menu.h"
+	"Constant.h"
+	"Play.h"
+
+1653136522 source:e:\h\cs plane\cs plane\menu.cpp
+	<iostream>
+	"Menu.h"
+
+1653131334 source:e:\h\cs plane\cs plane\mybullet.cpp
+	"MyBullet.h"
+
+1653132118 source:e:\h\cs plane\cs plane\myplane.cpp
+	"MyPlane.h"
+
+1652837793 source:e:\h\cs plane\cs plane\object.cpp
+	"Object.h"
+
+1653136522 source:e:\h\cs plane\cs plane\play.cpp
+	<iostream>
+	<algorithm>
+	<fstream>
+	"Play.h"
+	"Menu.h"
+
+1653131334 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\bigbang.cpp
+	"BigBang.h"
+
+1653202247 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\bigbang.h
+	"LTexture.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\ltexture.h
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+	"Constant.h"
+
+1653195095 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\constant.h
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\checkcollision.cpp
+	"CheckCollision.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\checkcollision.h
+	<SDL.h>
+
+1653016395 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\close.cpp
+	<iostream>
+	"init.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\init.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\compare.cpp
+	<iostream>
+	<SDL.h>
+
+1653131334 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\enemybullet.cpp
+	"EnemyBullet.h"
+	<iostream>
+
+1653196273 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\enemybullet.h
+	"Object.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\object.h
+	"LTexture.h"
+
+1653132118 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\enemyplane.cpp
+	<sstream>
+	"EnemyPlane.h"
+
+1653202195 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\enemyplane.h
+	<vector>
+	"EnemyBullet.h"
+	"Object.h"
+	"BigBang.h"
+
+1653131364 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\enemyplane2.cpp
+	<sstream>
+	<iostream>
+	"EnemyPlane2.h"
+
+1653202195 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\enemyplane2.h
+	<vector>
+	<SDL.h>
+	"EnemyBullet.h"
+	"Object.h"
+
+1653136522 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\home.cpp
+	<iostream>
+	<fstream>
+	"Menu.h"
+
+1653123888 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\menu.h
+	"LTexture.h"
+	"init.h"
+	"close.h"
+	"Play.h"
+
+1653016395 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\close.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1653193532 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\play.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	"Constant.h"
+	"init.h"
+	"LTexture.h"
+	"Object.h"
+	"MyBullet.h"
+	"MyPlane.h"
+	"EnemyBullet.h"
+	"EnemyPlane.h"
+	"EnemyPlane2.h"
+	"Rocket.h"
+	"HP.h"
+	"BigBang.h"
+	"Compare.h"
+	"CheckCollision.h"
+
+1653196273 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\mybullet.h
+	"Object.h"
+
+1653202198 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\myplane.h
+	<stdio.h>
+	<vector>
+	<sstream>
+	"Object.h"
+	"MyBullet.h"
+	"BigBang.h"
+
+1653202208 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\hp.h
+	"Object.h"
+
+1652837793 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\compare.h
+
+1653131334 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\hp.cpp
+	"HP.h"
+
+1653016169 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\init.cpp
+	<iostream>
+	"init.h"
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\ltexture.cpp
+	<iostream>
+	"LTexture.h"
+	<SDL_image.h>
+
+1653016395 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<vector>
+	<cstdlib>
+	<algorithm>
+	"init.h"
+	"close.h"
+	"LTexture.h"
+	"Menu.h"
+	"Constant.h"
+	"Play.h"
+
+1653136522 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\menu.cpp
+	<iostream>
+	"Menu.h"
+
+1653131334 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\mybullet.cpp
+	"MyBullet.h"
+
+1653132118 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\myplane.cpp
+	"MyPlane.h"
+
+1652837793 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\object.cpp
+	"Object.h"
+
+1653203303 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\play.cpp
+	<iostream>
+	<algorithm>
+	<fstream>
+	"Play.h"
+	"Menu.h"
+
+1653202247 c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\rocket.h
+	<sstream>
+	<stdlib.h>
+	"Object.h"
+	"Constant.h"
+
+1653197431 source:c:\uet\lap trinh nang cao\c++\hoc sdl\testplaneshooter\22 - 5 - 2022\cs plane\cs plane\rocket.cpp
+	"Rocket.h"
+
