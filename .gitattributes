@@ -1,0 +1,15 @@
+* text=auto
+
+# Mark header files as C++, not C
+*.h linguist-language=C++
+*.hpp linguist-language=C++
+
+# Explicitly mark source files
+*.cpp linguist-language=C++
+
+# Documentation
+*.md text eol=lf
+
+# Build files  
+Makefile text eol=lf
+*.sh text eol=lf

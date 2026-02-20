@@ -2,8 +2,9 @@
 #define Value_h
 
 #include "LTexture.h"
+#include <vector>
 
 LTexture Bg;
-LTexture *gTextTexture = new LTexture[5];
+vector<LTexture> gTextTexture(5);
 
 #endif

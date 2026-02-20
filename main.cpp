@@ -26,7 +26,7 @@ Mix_Music *gMusic = NULL;
 LTexture Bg;
 vector<pair<int, int> > res;
 int check_background = 1, check_mixer = 1, n = 0;
-string *s = new string[15];
+vector<string> s(15);
 
 int main(int argc, char *args[])
 {

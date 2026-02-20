@@ -4,6 +4,7 @@
 
 #include "Play.h"
 #include "Menu.h"
+#include "Paths.h"
 
 // Global variable
 
@@ -442,6 +443,10 @@ void reset()
     Plane.vy = 0;
     Plane.hp = 100;
     Plane.alive = true;
+    Plane.bulletCount = 20;
+    Plane.maxBullets = 20;
+    Plane.recoveryTime = 0;
+    Plane.lastRegenTime = 0;
     Plane.bullet.clear();
     for (int i = 0; i < EnemyPlane.size(); i++)
     {
@@ -499,17 +504,19 @@ void close()
 
 void loadmedia(SDL_Renderer *&gRenderer, TTF_Font *&gFont, TTF_Font *&pFont)
 {
-    gFont = TTF_OpenFont("VAPTIMN.TTF", 13);
-    pFont = TTF_OpenFont("VAVOBI.TTF", 20);
-    Fl.loadfromfile(gRenderer, "FinishLine.png");
-    Plane.loadfromfile(gRenderer, "MyPlane.png");
-    MBullet.loadfromfile(gRenderer, "MyBullet.png");
-    Bullet.loadfromfile(gRenderer, "Bullet.png");
-    EPlane.loadfromfile(gRenderer, "EnemyPlane.png");
-    EPlane2.loadfromfile(gRenderer, "EnemyPlane2.png");
-    Rkt.loadfromfile(gRenderer, "Rocket.png");
-    BB.loadfromfile(gRenderer, "Explosion.png");
-    hp.loadfromfile(gRenderer, "HP.png");
+    gFont = TTF_OpenFont("font/VAPTIMN.TTF", 13);
+    if (!gFont) gFont = TTF_OpenFont("VAPTIMN.TTF", 13);
+    pFont = TTF_OpenFont("font/VAVOBI.TTF", 20);
+    if (!pFont) pFont = TTF_OpenFont("VAVOBI.TTF", 20);
+    Fl.loadfromfile(gRenderer, imgUI("FinishLine.png"));
+    Plane.loadfromfile(gRenderer, imgPlanes("MyPlane.png"));
+    MBullet.loadfromfile(gRenderer, imgBullets("MyBullet.png"));
+    Bullet.loadfromfile(gRenderer, imgBullets("Bullet.png"));
+    EPlane.loadfromfile(gRenderer, imgPlanes("EnemyPlane.png"));
+    EPlane2.loadfromfile(gRenderer, imgPlanes("EnemyPlane2.png"));
+    Rkt.loadfromfile(gRenderer, imgRockets("Rocket.png"));
+    BB.loadfromfile(gRenderer, imgEffects("Explosion.png"));
+    hp.loadfromfile(gRenderer, imgUI("HP.png"));
     PressP.loadfromrenderedtext(gRenderer, pFont, "Press P to Continue", Color);
     PressB.loadfromrenderedtext(gRenderer, pFont, "Press B to Back to Menu", Color);
     Die.loadfromrenderedtext(gRenderer, pFont, "You died!", Color);
@@ -520,9 +527,9 @@ void loadmedia(SDL_Renderer *&gRenderer, TTF_Font *&gFont, TTF_Font *&pFont)
 
 void loadbg(int &check_background, SDL_Renderer *&gRenderer)
 {
-    if (check_background == 1) BG1.loadfromfile(gRenderer, "Jungle.png");
-    if (check_background == 2) BG1.loadfromfile(gRenderer, "ocean.png");
-    if (check_background == 3) BG1.loadfromfile(gRenderer, "galaxy.png");
+    if (check_background == 1) BG1.loadfromfile(gRenderer, imgBg("Jungle.png"));
+    if (check_background == 2) BG1.loadfromfile(gRenderer, imgBg("ocean.png"));
+    if (check_background == 3) BG1.loadfromfile(gRenderer, imgBg("galaxy.png"));
 }
 
 //point sort
@@ -553,6 +560,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
     while (!quit)
     {
         Uint32 tam1 = SDL_GetTicks();
+        
         while (SDL_PollEvent(&e) != 0)
         {
             if (e.type == SDL_QUIT)
@@ -564,32 +572,53 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
             {
                 if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RETURN) reset();
                 if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_b)
-                {
+                {   
+                    
                     close();
                     quit = true;
+                  
                 }
             }
             else
-            {
+            {   
                 if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_b && paused == true)
                 {
                     close();
                     quit = true;
                 }
-                else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_p)
-                {
+
+                if (e.type == SDL_KEYDOWN && (e.key.keysym.sym == SDLK_p || (e.key.keysym.sym == SDLK_b && paused  == false)))
+                {   
+                 
                     if (paused == true)
                     {
                         continueTime = SDL_GetTicks();
                         paused = false;
+                      
                     }
                     else
                     {
                         pauseTime = countTime;
                         paused = true;
+
                     }
+                    
                 }
-                else if (Plane.alive1() == true && paused == false) Plane.handle(gRenderer, e);
+                else if (Plane.alive1() == true && paused == false) Plane.handle(gRenderer, e, tam1);
+            }
+        }
+
+        // Handle continuous SPACE key press for firing
+        if (Plane.alive1() == true && paused == false)
+        {
+            const Uint8 *keys = SDL_GetKeyboardState(NULL);
+            if (keys[SDL_SCANCODE_SPACE] && Plane.bulletCount > 0)
+            {
+                if (tam1 - Plane.lastFireTime >= Plane.fireDelay)
+                {
+                    Plane.fireBullet(Plane.x + (Plane.w - Bullet_w) / 2, Plane.y);
+                    Plane.lastFireTime = tam1;
+                }
             }
         }
 
@@ -636,6 +665,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
         {
             if (paused == false)
             {
+                Plane.updateBulletRecovery(countTime);
                 stringstream ss;
                 ss << "Score: " << score;
                 Point.loadfromrenderedtext(gRenderer, gFont, ss.str().c_str(), Color);

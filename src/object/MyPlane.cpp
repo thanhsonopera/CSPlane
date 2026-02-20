@@ -1,4 +1,5 @@
 #include "MyPlane.h"
+#include <algorithm>
 
 void MyPlane::loadfromfile(SDL_Renderer *&gRenderer, string path)
 {
@@ -45,7 +46,7 @@ void MyPlane::loadfromfile(SDL_Renderer *&gRenderer, string path)
     shift();
 }
 
-void MyPlane::handle(SDL_Renderer *&gRenderer, SDL_Event &e)
+void MyPlane::handle(SDL_Renderer *&gRenderer, SDL_Event &e, Uint32 currentTime)
 {
     if (e.type == SDL_KEYDOWN && e.key.repeat == 0)
     {
@@ -62,10 +63,6 @@ void MyPlane::handle(SDL_Renderer *&gRenderer, SDL_Event &e)
             break;
         case SDLK_RIGHT:
             vx += vt;
-            break;
-        case SDLK_SPACE:
-            MyBullet tam(x + (w - Bullet_w) / 2, y);
-            bullet.push_back(tam);
             break;
         }
     }
@@ -102,8 +99,43 @@ void MyPlane::move1()
     int i = 0;
     while (i < bullet.size())
     {
-        if (bullet[i].move1() == false) bullet.erase(bullet.begin() + i);
+        if (bullet[i].move1() == false) {
+            bullet.erase(bullet.begin() + i);
+            bulletCount++; // Recover bullet when it's destroyed or goes off-screen
+        }
         else i++;
+    }
+}
+
+void MyPlane::updateBulletRecovery(Uint32 currentTime)
+{
+    // Initialize recovery timer
+    if (recoveryTime == 0) {
+        recoveryTime = currentTime;
+        lastRegenTime = currentTime;
+    }
+    
+    // Passive regeneration: 2 bullets per second (up to max)
+    if (currentTime - lastRegenTime >= 1000) {
+        bulletCount = std::min(bulletCount + regenPerSecond, maxBullets);
+        lastRegenTime = currentTime;
+    }
+    
+    // Every 30 seconds: recover 50% of max bullets AND increase max by 10
+    if (currentTime - recoveryTime >= 30000) {
+        int recoveryAmount = maxBullets / 2;
+        bulletCount = std::min(bulletCount + recoveryAmount, maxBullets);
+        maxBullets += 10; // Increase bullet limit
+        recoveryTime = currentTime; // Reset recovery timer
+    }
+}
+
+void MyPlane::fireBullet(int posX, int posY)
+{
+    if (bulletCount > 0) {
+        MyBullet newBullet(posX, posY);
+        bullet.push_back(newBullet);
+        bulletCount--;
     }
 }
 

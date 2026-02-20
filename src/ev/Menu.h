@@ -5,28 +5,30 @@
 #include "init.h"
 #include "close.h"
 #include "Play.h"
+#include <vector>
 
-void loadMedia_1(SDL_Renderer *&gRenderer, LTexture &Bg);
-void loadMedia_2(int x, int fsize, SDL_Renderer *&gRenderer, LTexture *&gTextTexture);
-void loadMedia_3(int x, int fsize, SDL_Renderer *&gRenderer, LTexture *&gTextTexture_2, string *&s);
-void loadMedia_4(int x, int fsize, SDL_Renderer *&gRenderer, LTexture *&gTextTexture_3);
-void loadMedia_5(int &check_mixer, Mix_Music *&gMusic);
-void loadMedia_6(int x, int fsize, SDL_Renderer *&gRenderer, LTexture *&gTextTexture_4);
-void loadMedia_7();
-void loadMedia_8(int x, int fsize, SDL_Renderer *&gRenderer, LTexture *&gTextTexture_6);
-void loadMedia_9(int x, int fsize, SDL_Renderer *&gRenderer, LTexture *&gTextTexture_7);
+using namespace std;
+
+void loadBackground(SDL_Renderer *&gRenderer, LTexture &Bg);
+void loadMenuText(int x, int fsize, SDL_Renderer *&gRenderer, vector<LTexture> &menuText);
+void loadLeaderboardText(int x, int fsize, SDL_Renderer *&gRenderer, vector<LTexture> &leaderboardText, vector<string> &s);
+void loadTutorialText(int x, int fsize, SDL_Renderer *&gRenderer, vector<LTexture> &tutorialText);
+void loadMusicChoice(int &check_mixer, Mix_Music *&gMusic);
+void loadSettingText(int x, int fsize, SDL_Renderer *&gRenderer, vector<LTexture> &settingText);
+void loadBackgroundOptionsText(int x, int fsize, SDL_Renderer *&gRenderer, vector<LTexture> &backgroundOptionsText);
+void loadMusicOptionsText(int x, int fsize, SDL_Renderer *&gRenderer, vector<LTexture> &musicOptionsText);
 
 
-int Update(int keyrow, int x);
-int Update_2(int keyrow, int x);
-int Update_3(int keyrow, int x);
-int Update_4(int keyrow, int x);
-int Update_5(int keyrow, int x);
+int navigateMainMenu(int keyrow, int x);
+int navigateLeaderboard(int keyrow, int x);
+int navigateSettingsMenu(int keyrow, int x);
+int navigateTutorialMenu(int keyrow, int x);
+int navigateOptionsList(int keyrow, int x);
 
 void Solution(int &check_mixer, int &check_background, SDL_Renderer *&gRenderer, LTexture Bg, TTF_Font *gFont, Mix_Music *&gMusic);
-void Leaderboard(int &check_mixer, SDL_Renderer *&gRenderer, LTexture Bg, string *&s, TTF_Font *gFont, Mix_Music *&gMusic);
+void Leaderboard(int &check_mixer, SDL_Renderer *&gRenderer, LTexture Bg, vector<string> &s, TTF_Font *gFont, Mix_Music *&gMusic);
 void Tutorial(int &check_mixer, SDL_Renderer *&gRenderer, LTexture Bg, TTF_Font *gFont, Mix_Music *&gMusic);
-void Menu(int &check_mixer, int &check_background, SDL_Renderer *&gRenderer, string *&s, LTexture Bg, SDL_Window *&gWindow, TTF_Font *gFont, TTF_Font *pFont, Mix_Music *&gMusic,
+void Menu(int &check_mixer, int &check_background, SDL_Renderer *&gRenderer, vector<string> &s, LTexture Bg, SDL_Window *&gWindow, TTF_Font *gFont, TTF_Font *pFont, Mix_Music *&gMusic,
           vector<pair<int, int> > &res);
 
 void S_background(int &check_background, SDL_Renderer *&gRenderer, LTexture Bg, TTF_Font *gFont);

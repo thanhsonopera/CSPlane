@@ -19,6 +19,7 @@ public:
     void loadfromfile(SDL_Renderer *&gRenderer, string path);
     void loadfromrenderedtext(SDL_Renderer *&gRenderer, TTF_Font *&gFont, string text, SDL_Color Color);
     void render(SDL_Renderer *&gRenderer, int x, int y, SDL_Rect *p = NULL);
+    void renderEx(SDL_Renderer *&gRenderer, int x, int y, double scale, Uint8 alpha);
     int getWidth();
     int getHeight();
     void close();
