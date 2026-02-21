@@ -1,4 +1,6 @@
 #include "MyPlane.h"
+#include "Constant.h"
+#include <SDL.h>
 #include <algorithm>
 
 void MyPlane::loadfromfile(SDL_Renderer *&gRenderer, string path)
@@ -9,7 +11,7 @@ void MyPlane::loadfromfile(SDL_Renderer *&gRenderer, string path)
     w = img.getWidth();
     h = img.getHeight();
     x = (Width - w) / 2;
-    y = Height - h;
+    y = Height - h;  // screen Y
 
     pos.resize(6);
 
@@ -84,6 +86,25 @@ void MyPlane::handle(SDL_Renderer *&gRenderer, SDL_Event &e, Uint32 currentTime)
             break;
         }
     }
+    // Clamp velocities to maximum allowed speed
+    if (vx > maxSpeedX) vx = maxSpeedX;
+    if (vx < -maxSpeedX) vx = -maxSpeedX;
+    if (vy > maxSpeedY) vy = maxSpeedY;
+    if (vy < -maxSpeedY) vy = -maxSpeedY;
+}
+
+void MyPlane::setVelocityFromKeys(const Uint8 *keys)
+{
+    vx = 0;
+    vy = 0;
+    if (keys[SDL_SCANCODE_LEFT])  vx -= vt;
+    if (keys[SDL_SCANCODE_RIGHT]) vx += vt;
+    if (keys[SDL_SCANCODE_UP])    vy -= vt;
+    if (keys[SDL_SCANCODE_DOWN])  vy += vt;
+    if (vx > maxSpeedX)  vx = maxSpeedX;
+    if (vx < -maxSpeedX) vx = -maxSpeedX;
+    if (vy > maxSpeedY)  vy = maxSpeedY;
+    if (vy < -maxSpeedY) vy = -maxSpeedY;
 }
 
 void MyPlane::move1()
@@ -101,7 +122,6 @@ void MyPlane::move1()
     {
         if (bullet[i].move1() == false) {
             bullet.erase(bullet.begin() + i);
-            bulletCount++; // Recover bullet when it's destroyed or goes off-screen
         }
         else i++;
     }
@@ -115,9 +135,9 @@ void MyPlane::updateBulletRecovery(Uint32 currentTime)
         lastRegenTime = currentTime;
     }
     
-    // Passive regeneration: 2 bullets per second (up to max)
-    if (currentTime - lastRegenTime >= 1000) {
-        bulletCount = std::min(bulletCount + regenPerSecond, maxBullets);
+    // Passive regeneration: 1 bullet every 2.5 seconds (up to max)
+    if (currentTime - lastRegenTime >= 2500) {
+        bulletCount = std::min(bulletCount + 1, maxBullets);
         lastRegenTime = currentTime;
     }
     
@@ -161,7 +181,7 @@ void MyPlane::shift()
     for (int i = 0; i < pos.size(); i++)
     {
         pos[i].x = r;
-        pos[i].y = y + (h - pos[5].h - pos[i]. h);
+        pos[i].y = y + (h - pos[5].h - pos[i].h);
         r += pos[i].w;
     }
     pos[5].x = x + (w - pos[5].w) / 2;
@@ -189,4 +209,14 @@ void MyPlane::close()
     bullet.clear();
     img.close();
     status.close();
+}
+
+int MyPlane::getVx()
+{
+    return vx;
+}
+
+int MyPlane::getVy()
+{
+    return vy;
 }
