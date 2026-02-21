@@ -5,6 +5,7 @@
 #include "Play.h"
 #include "Menu.h"
 #include "Paths.h"
+#include "../object/Laser.h"
 
 // Global variable
 
@@ -24,6 +25,8 @@ LTexture PressB;
 LTexture Die;
 LTexture Result;
 LTexture PlayAgain;
+LTexture BulletInfo;
+LTexture NoAmmoPopup;
 
 SDL_Rect background;
 MyPlane Plane;
@@ -32,6 +35,8 @@ vector <Enemy> EnemyPlane;
 vector <Enemy2> EnemyPlane2;
 vector <Rocket> Rks;
 vector <BigBang> Explosions;
+vector <Laser> Lasers1; // Single laser ability
+vector <Laser> Lasers2; // Triple laser ability
 Uint32 timing = 0;
 int score;
 bool paused;
@@ -40,6 +45,8 @@ Uint32 startTime = 0;
 Uint32 realTime = 0;
 Uint32 pauseTime = 0;
 Uint32 continueTime = 0;
+bool lastXKeyPressed = false;
+bool lastCKeyPressed = false;
 
 
 //Random EnemyPlane
@@ -134,7 +141,6 @@ void sinh(int sl1, int sl2, int sl3)
 void update()
 {
     //May bay dong minh va cham may bay dich
-
     vector <SDL_Rect> tam1 = Plane.getRect();
     for (int i = 0; i < EnemyPlane.size(); i++)
         if (EnemyPlane[i].alive1() == true)
@@ -438,7 +444,7 @@ void reset()
     continueTime = 0;
     background = {0, Level_Height - Height, Width, Height};
     Plane.x = (Width - Plane.w) / 2;
-    Plane.y = Height - Plane.h;
+    Plane.y = Height - Plane.h;  // screen Y
     Plane.vx = 0;
     Plane.vy = 0;
     Plane.hp = 100;
@@ -447,6 +453,11 @@ void reset()
     Plane.maxBullets = 20;
     Plane.recoveryTime = 0;
     Plane.lastRegenTime = 0;
+    Uint32 currentTime = SDL_GetTicks();
+    
+    Plane.ability1LastUse = currentTime - Plane.ability1Cooldown;
+    Plane.ability2LastUse = currentTime - Plane.ability2Cooldown;
+
     Plane.bullet.clear();
     for (int i = 0; i < EnemyPlane.size(); i++)
     {
@@ -483,6 +494,8 @@ void close()
     hp.close();
     Point.close();
     Time.close();
+    BulletInfo.close();
+    NoAmmoPopup.close();
     PressB.close();
     PressP.close();
     Plane.close();
@@ -498,6 +511,8 @@ void close()
     EnemyPlane2.clear();
     HPBox.clear();
     Explosions.clear();
+    Lasers1.clear();
+    Lasers2.clear();
 }
 
 //Loadmedia
@@ -612,14 +627,51 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
         if (Plane.alive1() == true && paused == false)
         {
             const Uint8 *keys = SDL_GetKeyboardState(NULL);
-            if (keys[SDL_SCANCODE_SPACE] && Plane.bulletCount > 0)
+            if (keys[SDL_SCANCODE_SPACE])
             {
-                if (tam1 - Plane.lastFireTime >= Plane.fireDelay)
+                if (Plane.bulletCount > 0)
                 {
-                    Plane.fireBullet(Plane.x + (Plane.w - Bullet_w) / 2, Plane.y);
-                    Plane.lastFireTime = tam1;
+                    if (tam1 - Plane.lastFireTime >= Plane.fireDelay)
+                    {
+                        Plane.fireBullet(Plane.x + (Plane.w - Bullet_w) / 2, Plane.y);
+                        Plane.lastFireTime = tam1;
+                    }
+                }
+                else
+                {
+                    // No ammo - show popup
+                    Plane.lastNoAmmoTime = tam1;
                 }
             }
+            
+            // Ability 1: X key - Single laser (20s cooldown, 1s duration)
+            bool xKeyPressed = keys[SDL_SCANCODE_X];
+            if (xKeyPressed && !lastXKeyPressed && (tam1 - Plane.ability1LastUse >= Plane.ability1Cooldown))
+            {
+                int laserDamage = 50 + (realTime / 60000) * 10; // +10 damage per minute
+                Laser newLaser(Plane.x + Plane.w/2, Plane.y - 55, laserDamage, 10, 80, 500, countTime, Plane.getVx(), Plane.getVy());
+                Lasers1.push_back(newLaser);
+                Plane.ability1LastUse = tam1;
+            }
+            lastXKeyPressed = xKeyPressed;
+            
+            // Ability 2: C key - Triple laser (30s cooldown, 1s duration)
+            bool cKeyPressed = keys[SDL_SCANCODE_C];
+            if (cKeyPressed && !lastCKeyPressed && (tam1 - Plane.ability2LastUse >= Plane.ability2Cooldown))
+            {
+                int laserDamage = 30 + (realTime / 60000) * 20; // +20 damage per minute
+                // Left laser (spread further apart)
+                Laser laser1(Plane.x - 15, Plane.y - 55, laserDamage, 8, 100, 500, countTime, Plane.getVx(), Plane.getVy());
+                Lasers2.push_back(laser1);
+                // Center laser
+                Laser laser2(Plane.x + Plane.w/2, Plane.y - 55, laserDamage, 10, 100, 500, countTime, Plane.getVx(), Plane.getVy());
+                Lasers2.push_back(laser2);
+                // Right laser
+                Laser laser3(Plane.x + Plane.w + 15, Plane.y - 55, laserDamage, 8, 100, 500, countTime, Plane.getVx(), Plane.getVy());
+                Lasers2.push_back(laser3);
+                Plane.ability2LastUse = tam1;
+            }
+            lastCKeyPressed = cKeyPressed;
         }
 
         if (background.y < 0)
@@ -679,13 +731,115 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
                 ss << "Time: " << m << ":" << s << ":" << ms;
                 Time.loadfromrenderedtext(gRenderer, gFont, ss.str().c_str(), Color);
 
-                background.y -= 1;
-                if (background.y < -Fl.getHeight()) background.y = Level_Height;
+                // Velocity from key state every frame -> no drift when keys not held
+                const Uint8 *keys = SDL_GetKeyboardState(NULL);
+                Plane.setVelocityFromKeys(keys);
+                int prevPlaneY = Plane.y;
+                Plane.move1();
+                if (Plane.y < prevPlaneY) {
+                    background.y -= (prevPlaneY - Plane.y);
+                    if (background.y < 0) background.y = 0;
+                    if (background.y > Level_Height - Height) background.y = Level_Height - Height;
+                }
                 update();
                 sinh(2 + realTime / 30000, 1 + realTime / 60000, realTime / 60000);
-
-                Plane.move1();
+                
+                // Update and handle laser collision for ability 1 (single laser)
                 int i = 0;
+                while (i < Lasers1.size())
+                {
+                    if (!Lasers1[i].isActive(countTime))
+                    {
+                        Lasers1.erase(Lasers1.begin() + i);
+                        continue;
+                    }
+                    // Move laser along current plane velocity each frame so it follows the plane
+                    Lasers1[i].moveBy(Plane.getVx(), Plane.getVy());
+                    
+                    // Check collision with enemies
+                    bool hit = false;
+                    for (int j = 0; j < EnemyPlane.size() && !hit; j++)
+                    {
+                        SDL_Rect enemyPos = {(int)EnemyPlane[j].x, (int)EnemyPlane[j].y, EnemyPlane[j].w, EnemyPlane[j].h};
+                        if (Lasers1[i].checkCollision(enemyPos))
+                        {
+                            EnemyPlane[j].hp -= Lasers1[i].getDamage();
+                            if (EnemyPlane[j].hp <= 0)
+                            {
+                                score += 200;
+                            }
+                            Lasers1.erase(Lasers1.begin() + i);
+                            hit = true;
+                        }
+                    }
+                    if (!hit)
+                    {
+                        for (int j = 0; j < EnemyPlane2.size() && !hit; j++)
+                        {
+                            SDL_Rect enemyPos = {(int)EnemyPlane2[j].x, (int)EnemyPlane2[j].y, EnemyPlane2[j].w, EnemyPlane2[j].h};
+                            if (Lasers1[i].checkCollision(enemyPos))
+                            {
+                                EnemyPlane2[j].hp -= Lasers1[i].getDamage();
+                                if (EnemyPlane2[j].hp <= 0)
+                                {
+                                    score += 200;
+                                }
+                                Lasers1.erase(Lasers1.begin() + i);
+                                hit = true;
+                            }
+                        }
+                    }
+                    if (!hit) i++;
+                }
+                
+                // Update and handle laser collision for ability 2 (triple laser)
+                i = 0;
+                while (i < Lasers2.size())
+                {
+                    if (!Lasers2[i].isActive(countTime))
+                    {
+                        Lasers2.erase(Lasers2.begin() + i);
+                        continue;
+                    }
+                    // Move laser along current plane velocity each frame so it follows the plane
+                    Lasers2[i].moveBy(Plane.getVx(), Plane.getVy());
+                    
+                    // Check collision with enemies
+                    bool hit = false;
+                    for (int j = 0; j < EnemyPlane.size() && !hit; j++)
+                    {
+                        SDL_Rect enemyPos = {(int)EnemyPlane[j].x, (int)EnemyPlane[j].y, EnemyPlane[j].w, EnemyPlane[j].h};
+                        if (Lasers2[i].checkCollision(enemyPos))
+                        {
+                            EnemyPlane[j].hp -= Lasers2[i].getDamage();
+                            if (EnemyPlane[j].hp <= 0)
+                            {
+                                score += 200;
+                            }
+                            Lasers2.erase(Lasers2.begin() + i);
+                            hit = true;
+                        }
+                    }
+                    if (!hit)
+                    {
+                        for (int j = 0; j < EnemyPlane2.size() && !hit; j++)
+                        {
+                            SDL_Rect enemyPos = {(int)EnemyPlane2[j].x, (int)EnemyPlane2[j].y, EnemyPlane2[j].w, EnemyPlane2[j].h};
+                            if (Lasers2[i].checkCollision(enemyPos))
+                            {
+                                EnemyPlane2[j].hp -= Lasers2[i].getDamage();
+                                if (EnemyPlane2[j].hp <= 0)
+                                {
+                                    score += 200;
+                                }
+                                Lasers2.erase(Lasers2.begin() + i);
+                                hit = true;
+                            }
+                        }
+                    }
+                    if (!hit) i++;
+                }
+                
                 while (i < EnemyPlane.size())
                 {
                     if (EnemyPlane[i].move1(gRenderer, realTime) == false)
@@ -724,7 +878,55 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
             }
             Point.render(gRenderer, 0, 0);
             Time.render(gRenderer, 0, Point.getHeight());
+            
+            // Display bullet info and recovery timer
+            stringstream bulletSs;
+            Uint32 timeSinceRecovery = countTime - Plane.recoveryTime;
+            Uint32 timeUntilRecovery = (timeSinceRecovery >= 30000) ? 0 : (30000 - timeSinceRecovery) / 1000;
+            
+            bulletSs << "Bullets: " << Plane.bulletCount << "/" << Plane.maxBullets << " | Recovery: " << timeUntilRecovery << "s";
+            
+            BulletInfo.loadfromrenderedtext(gRenderer, gFont, bulletSs.str().c_str(), Color);
+            BulletInfo.render(gRenderer, 0, Point.getHeight() + Time.getHeight());
+            
+            // Display ability cooldowns (only when on cooldown)
+            Uint32 ability1CooldownRemaining = (countTime - Plane.ability1LastUse >= Plane.ability1Cooldown) ? 0 : (Plane.ability1Cooldown - (countTime - Plane.ability1LastUse)) / 1000;
+            Uint32 ability2CooldownRemaining = (countTime - Plane.ability2LastUse >= Plane.ability2Cooldown) ? 0 : (Plane.ability2Cooldown - (countTime - Plane.ability2LastUse)) / 1000;
+            
+            if (ability1CooldownRemaining > 0 || ability2CooldownRemaining > 0)
+            {
+                stringstream abilitySs;
+                SDL_Color abilityColor = {100, 200, 255};
+                
+                if (ability1CooldownRemaining > 0)
+                    abilitySs << "X(Laser1):" << ability1CooldownRemaining << "s";
+                
+                if (ability2CooldownRemaining > 0)
+                {
+                    if (ability1CooldownRemaining > 0) abilitySs << " | ";
+                    abilitySs << "C(Laser3):" << ability2CooldownRemaining << "s";
+                }
+                
+                BulletInfo.loadfromrenderedtext(gRenderer, gFont, abilitySs.str().c_str(), abilityColor);
+                BulletInfo.render(gRenderer, 0, Point.getHeight() + Time.getHeight() + 35);
+            }
+            
+            // Render No Ammo popup if active (within 1 second)
+            if (Plane.lastNoAmmoTime > 0 && (countTime - Plane.lastNoAmmoTime) < 1000)
+            {
+                SDL_Color redColor = {255, 0, 0, 255};
+                NoAmmoPopup.loadfromrenderedtext(gRenderer, gFont, "No Ammo!", redColor);
+                NoAmmoPopup.render(gRenderer, 30, 100);
+            }
+            
             Plane.render(gRenderer, gFont, MBullet);
+            
+            // Render lasers
+            for (int i = 0; i < Lasers1.size(); i++)
+                Lasers1[i].render(gRenderer);
+            for (int i = 0; i < Lasers2.size(); i++)
+                Lasers2[i].render(gRenderer);
+            
             for (int i = 0; i < EnemyPlane.size(); i++)
                 EnemyPlane[i].render(gRenderer, gFont, EPlane, Bullet);
             for (int i = 0; i < EnemyPlane2.size(); i++)
