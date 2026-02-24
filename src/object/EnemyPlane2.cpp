@@ -1,16 +1,17 @@
 #include <sstream>
 #include <iostream>
 #include "EnemyPlane2.h"
+#include "../GameConfig.h"
 
 Enemy2::Enemy2(int x_, int y_, int diff)
 {
-    hp = 50;
+    hp = ENEMY2_HP;
     alive = true;
     w = Plane2_w;
     h = Plane2_h;
     x = x_;
     y = -h;
-    vx = 1 + diff / 50000;
+    vx = ENEMY2_VX_BASE + diff / ENEMY2_DIFF_DIV;
     dem = 0;
 
     pos.resize(4);
@@ -44,8 +45,8 @@ bool Enemy2::move1(SDL_Renderer *&gRenderer, int diff)
     if (alive == true)
     {
         dem++;
-        int tam = 200 - (diff / 30000) * 50;
-        if (tam < 50) tam = 50;
+        int tam = ENEMY2_FIRE_INTERVAL_BASE - (diff / ENEMY2_FIRE_INTERVAL_DIV) * ENEMY2_FIRE_INTERVAL_DEC;
+        if (tam < ENEMY2_FIRE_INTERVAL_MIN) tam = ENEMY2_FIRE_INTERVAL_MIN;
         if (dem >= tam)
         {
             EnemyBullet tam1(x + (w - Bullet_w) / 4, y + h - Bullet_h / 2, diff);
@@ -65,7 +66,7 @@ bool Enemy2::move1(SDL_Renderer *&gRenderer, int diff)
 
     if (alive == true)
     {
-        if (y < status.getHeight()) y += 2;
+        if (y < status.getHeight()) y += ENEMY2_ENTRY_SPEED;
         else
         {
             if (x + w > Width || x < 0) vx = -vx;

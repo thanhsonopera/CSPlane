@@ -1,15 +1,16 @@
 #include <sstream>
 #include "EnemyPlane.h"
+#include "../GameConfig.h"
 
 Enemy::Enemy(int x_, int y_, int diff)
 {
-    hp = 30;
+    hp = ENEMY1_HP;
     alive = true;
     w = Plane_w;
     h = Plane_h;
     x = x_;
     y = -h;
-    vx = 1 + diff / 50000;
+    vx = ENEMY1_VX_BASE + diff / ENEMY1_DIFF_DIV;
     int tam2 = rand() % 3;
     if (tam2 == 0) vx = -vx;
     else if (tam2 == 1) vx = 0;
@@ -55,7 +56,7 @@ bool Enemy::move1(SDL_Renderer *&gRenderer, int diff)
     if (alive == false && bullet.size() == 0) return false;
     if (alive == true)
     {
-        if (y % 200 == 0)
+        if (y % ENEMY1_FIRE_INTERVAL == 0)
         {
             EnemyBullet tam(x + (w - Bullet_w) / 2, y + h - Bullet_h / 2, diff);
             bullet.push_back(tam);
@@ -70,7 +71,7 @@ bool Enemy::move1(SDL_Renderer *&gRenderer, int diff)
     if (alive == true)
     {
         if (x + w > Width || x < 0) vx = -vx;
-        y += 1;
+        y += ENEMY1_VY;
         x += vx;
         shift();
     }

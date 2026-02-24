@@ -1,4 +1,5 @@
 #include "HP.h"
+#include "../GameConfig.h"
 
 HP::HP(int x_, int y_)
 {
@@ -11,6 +12,6 @@ HP::HP(int x_, int y_)
 bool HP::move1()
 {
     if (y > Height) return false;
-    y += vt / 4;
+    y += vt / HP_BOX_SPEED_DIV;
     return true;
 }

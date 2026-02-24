@@ -6,7 +6,7 @@
 void MyPlane::loadfromfile(SDL_Renderer *&gRenderer, string path)
 {
     img.loadfromfile(gRenderer, path.c_str());
-    hp = 100;
+    hp = PLANE_HP;
     alive = true;
     w = img.getWidth();
     h = img.getHeight();
@@ -136,16 +136,16 @@ void MyPlane::updateBulletRecovery(Uint32 currentTime)
     }
     
     // Passive regeneration: 1 bullet every 2.5 seconds (up to max)
-    if (currentTime - lastRegenTime >= 2500) {
+    if (currentTime - lastRegenTime >= PLANE_BULLET_REGEN_MS) {
         bulletCount = std::min(bulletCount + 1, maxBullets);
         lastRegenTime = currentTime;
     }
     
     // Every 30 seconds: recover 50% of max bullets AND increase max by 10
-    if (currentTime - recoveryTime >= 30000) {
+    if (currentTime - recoveryTime >= PLANE_RECOVERY_MS) {
         int recoveryAmount = maxBullets / 2;
         bulletCount = std::min(bulletCount + recoveryAmount, maxBullets);
-        maxBullets += 10; // Increase bullet limit
+        maxBullets += PLANE_RECOVERY_BONUS;
         recoveryTime = currentTime; // Reset recovery timer
     }
 }

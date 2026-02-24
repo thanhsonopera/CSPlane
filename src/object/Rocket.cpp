@@ -1,4 +1,5 @@
 #include "Rocket.h"
+#include "../GameConfig.h"
 
 Rocket::Rocket(int x_, int y_, int diff)
 {
@@ -6,8 +7,8 @@ Rocket::Rocket(int x_, int y_, int diff)
     y = y_;
     w = Rocket_w;
     h = Rocket_h;
-    hp = 100;
-    vy = vt / 2 + diff / 60000 * 2;
+    hp = ROCKET_HP;
+    vy = vt / ROCKET_VY_DIV + diff / ROCKET_DIFF_DIV * ROCKET_DIFF_MUL;
 }
 
 bool Rocket::move1()

@@ -1,4 +1,5 @@
 #include "MyBullet.h"
+#include "../GameConfig.h"
 
 MyBullet::MyBullet(int x_, int y_)
 {
@@ -12,7 +13,7 @@ MyBullet::MyBullet(int x_, int y_)
 bool MyBullet::move1()
 {
     if (y < 0) return false;
-    y -= vt / 2;
+    y -= vt / MY_BULLET_SPEED_DIV;
     shift();
     return true;
 }

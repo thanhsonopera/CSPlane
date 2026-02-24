@@ -1,9 +1,10 @@
 #include "EnemyBullet.h"
+#include "../GameConfig.h"
 #include <iostream>
 
 EnemyBullet::EnemyBullet(int x_, int y_, int diff)
 {
-    td = vt / 3 + diff / 30000;
+    td = vt / ENEMY_BULLET_SPEED_DIV + diff / ENEMY_BULLET_DIFF_DIV;
     x = x_;
     y = y_;
     w = Bullet_w;

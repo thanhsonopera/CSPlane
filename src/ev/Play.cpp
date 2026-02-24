@@ -127,7 +127,7 @@ void sinh(int sl1, int sl2, int sl3)
         EnemyPlane2.push_back(tam);
     }
 
-    int x3 = min1 + rand() % (max1 + 50 - min1);
+    int x3 = min1 + rand() % (max1 + SPAWN_RAND_EXTRA - min1);
     if (x3 == 15 && Rks.size() < min(sl3, 3))
     {
         SDL_Rect vt = Plane.getPos();
@@ -152,7 +152,7 @@ void update()
                 for (int k = 0; k < tam2.size(); k++)
                     if (CheckCollision(tam1[j], tam2[k]) == true)
                     {
-                        Plane.hp -= 30;
+                        Plane.hp -= DAMAGE_PLANE_HIT_ENEMY1;
                         EnemyPlane[i].hp = 0;
                         ok = false;
                         break;
@@ -171,7 +171,7 @@ void update()
                 for (int k = 0; k < tam2.size(); k++)
                     if (CheckCollision(tam1[j], tam2[k]) == true)
                     {
-                        Plane.hp -= 50;
+                        Plane.hp -= DAMAGE_PLANE_HIT_ENEMY2;
                         EnemyPlane2[i].hp = 0;
                         ok = false;
                         break;
@@ -245,7 +245,7 @@ void update()
                 for (int k = 0; k < tam3.size(); k++)
                     if (CheckCollision(tam2, tam3[k]) == true)
                     {
-                        EnemyPlane[j].hp -= 10;
+                        EnemyPlane[j].hp -= DAMAGE_BULLET_HIT_ENEMY;
                         Plane.bullet.erase(Plane.bullet.begin() + i);
                         ok = false;
                         break;
@@ -261,7 +261,7 @@ void update()
                     for (int k = 0; k < tam3.size(); k++)
                         if (CheckCollision(tam2, tam3[k]) == true)
                         {
-                            EnemyPlane2[j].hp -= 10;
+                            EnemyPlane2[j].hp -= DAMAGE_BULLET_HIT_ENEMY;
                             Plane.bullet.erase(Plane.bullet.begin() + i);
                             ok = false;
                             break;
@@ -284,7 +284,7 @@ void update()
             SDL_Rect tam3 = Rks[j].getPos();
             if (CheckCollision(tam2, tam3) == true)
             {
-                Rks[j].hp -= 20;
+                Rks[j].hp -= DAMAGE_BULLET_HIT_ROCKET;
                 Plane.bullet.erase(Plane.bullet.begin() + i);
                 ok = false;
             }
@@ -306,7 +306,7 @@ void update()
             for (int e = 0; e < tam1.size(); e++)
                 if (CheckCollision(tam2, tam1[e]) == true)
                 {
-                    Plane.hp -= 10;
+                    Plane.hp -= DAMAGE_ENEMY_BULLET;
                     EnemyPlane[j].bullet.erase(EnemyPlane[j].bullet.begin() + k);
                     ok = false;
                     break;
@@ -325,7 +325,7 @@ void update()
             for (int e = 0; e < tam1.size(); e++)
                 if (CheckCollision(tam2, tam1[e]) == true)
                 {
-                    Plane.hp -= 10;
+                    Plane.hp -= DAMAGE_ENEMY_BULLET;
                     EnemyPlane2[j].bullet.erase(EnemyPlane2[j].bullet.begin() + k);
                     ok = false;
                     break;
@@ -342,7 +342,7 @@ void update()
         for (int e = 0; e < tam2.size(); e++)
             if (CheckCollision(tam3, tam2[e]) == true)
             {
-                Plane.hp -= 50;
+                Plane.hp -= DAMAGE_ROCKET_HIT_PLANE;
                 Rks[j].hp = 0;
                 break;
             }
@@ -357,7 +357,7 @@ void update()
         SDL_Rect tam3 = {Plane.x, Plane.y, Plane.w, Plane.h};
         if (CheckCollision(tam2, tam3) == true)
         {
-            Plane.hp += 20;
+            Plane.hp += HP_BOX_HEAL;
             HPBox.erase(HPBox.begin() + i);
             ok = false;
         }
@@ -382,11 +382,11 @@ void update()
             if (EnemyPlane[j].hp <= 0)
             {
                 EnemyPlane[j].alive = false;
-                score += 30;
+                score += SCORE_ENEMY1;
                 BigBang k(EnemyPlane[j].x, EnemyPlane[j].y);
                 Explosions.push_back(k);
-                int t1 = rand() % 15;
-                if (t1 == 10)
+                int t1 = rand() % HP_DROP_RAND_MOD;
+                if (t1 == HP_DROP_RAND_VAL)
                 {
                     HP t2(EnemyPlane[j].x, EnemyPlane[j].y);
                     HPBox.push_back(t2);
@@ -399,11 +399,11 @@ void update()
             if (EnemyPlane2[j].hp <= 0)
             {
                 EnemyPlane2[j].alive = false;
-                score += 50;
+                score += SCORE_ENEMY2;
                 BigBang k(EnemyPlane2[j].x, EnemyPlane2[j].y);
                 Explosions.push_back(k);
-                int t1 = rand() % 15;
-                if (t1 == 10)
+                int t1 = rand() % HP_DROP_RAND_MOD;
+                if (t1 == HP_DROP_RAND_VAL)
                 {
                     HP t2(EnemyPlane2[j].x, EnemyPlane2[j].y);
                     HPBox.push_back(t2);
@@ -447,10 +447,10 @@ void reset()
     Plane.y = Height - Plane.h;  // screen Y
     Plane.vx = 0;
     Plane.vy = 0;
-    Plane.hp = 100;
+    Plane.hp = PLANE_HP;
     Plane.alive = true;
-    Plane.bulletCount = 20;
-    Plane.maxBullets = 20;
+    Plane.bulletCount = PLANE_MAX_BULLETS;
+    Plane.maxBullets = PLANE_MAX_BULLETS;
     Plane.recoveryTime = 0;
     Plane.lastRegenTime = 0;
     Uint32 currentTime = SDL_GetTicks();
@@ -519,10 +519,10 @@ void close()
 
 void loadmedia(SDL_Renderer *&gRenderer, TTF_Font *&gFont, TTF_Font *&pFont)
 {
-    gFont = TTF_OpenFont("font/VAPTIMN.TTF", 13);
-    if (!gFont) gFont = TTF_OpenFont("VAPTIMN.TTF", 13);
-    pFont = TTF_OpenFont("font/VAVOBI.TTF", 20);
-    if (!pFont) pFont = TTF_OpenFont("VAVOBI.TTF", 20);
+    gFont = TTF_OpenFont("font/VAPTIMN.TTF", FONT_SIZE_SMALL);
+    if (!gFont) gFont = TTF_OpenFont("VAPTIMN.TTF", FONT_SIZE_SMALL);
+    pFont = TTF_OpenFont("font/VAVOBI.TTF", FONT_SIZE_LARGE);
+    if (!pFont) pFont = TTF_OpenFont("VAVOBI.TTF", FONT_SIZE_LARGE);
     Fl.loadfromfile(gRenderer, imgUI("FinishLine.png"));
     Plane.loadfromfile(gRenderer, imgPlanes("MyPlane.png"));
     MBullet.loadfromfile(gRenderer, imgBullets("MyBullet.png"));
@@ -648,8 +648,8 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
             bool xKeyPressed = keys[SDL_SCANCODE_X];
             if (xKeyPressed && !lastXKeyPressed && (tam1 - Plane.ability1LastUse >= Plane.ability1Cooldown))
             {
-                int laserDamage = 50 + (realTime / 60000) * 10; // +10 damage per minute
-                Laser newLaser(Plane.x + Plane.w/2, Plane.y - 55, laserDamage, 10, 80, 500, countTime, Plane.getVx(), Plane.getVy());
+                int laserDamage = LASER1_DAMAGE_BASE + (realTime / 60000) * LASER1_DAMAGE_PER_MIN;
+                Laser newLaser(Plane.x + Plane.w/2, Plane.y - LASER_OFFSET_Y, laserDamage, LASER1_W, LASER1_H, LASER_DURATION_MS, countTime, Plane.getVx(), Plane.getVy());
                 Lasers1.push_back(newLaser);
                 Plane.ability1LastUse = tam1;
             }
@@ -659,15 +659,12 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
             bool cKeyPressed = keys[SDL_SCANCODE_C];
             if (cKeyPressed && !lastCKeyPressed && (tam1 - Plane.ability2LastUse >= Plane.ability2Cooldown))
             {
-                int laserDamage = 30 + (realTime / 60000) * 20; // +20 damage per minute
-                // Left laser (spread further apart)
-                Laser laser1(Plane.x - 15, Plane.y - 55, laserDamage, 8, 100, 500, countTime, Plane.getVx(), Plane.getVy());
+                int laserDamage = LASER2_DAMAGE_BASE + (realTime / 60000) * LASER2_DAMAGE_PER_MIN;
+                Laser laser1(Plane.x - LASER_SPREAD, Plane.y - LASER_OFFSET_Y, laserDamage, LASER2_W, LASER2_H, LASER_DURATION_MS, countTime, Plane.getVx(), Plane.getVy());
                 Lasers2.push_back(laser1);
-                // Center laser
-                Laser laser2(Plane.x + Plane.w/2, Plane.y - 55, laserDamage, 10, 100, 500, countTime, Plane.getVx(), Plane.getVy());
+                Laser laser2(Plane.x + Plane.w/2, Plane.y - LASER_OFFSET_Y, laserDamage, LASER1_W, LASER2_H, LASER_DURATION_MS, countTime, Plane.getVx(), Plane.getVy());
                 Lasers2.push_back(laser2);
-                // Right laser
-                Laser laser3(Plane.x + Plane.w + 15, Plane.y - 55, laserDamage, 8, 100, 500, countTime, Plane.getVx(), Plane.getVy());
+                Laser laser3(Plane.x + Plane.w + LASER_SPREAD, Plane.y - LASER_OFFSET_Y, laserDamage, LASER2_W, LASER2_H, LASER_DURATION_MS, countTime, Plane.getVx(), Plane.getVy());
                 Lasers2.push_back(laser3);
                 Plane.ability2LastUse = tam1;
             }
@@ -684,7 +681,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
             SDL_Rect tam2 = Plane.getPos();
             if (fn == false && CheckCollision(tam1, tam2) == true)
             {
-                score += 100;
+                score += SCORE_FINISH_LINE;
                 fn = true;
             }
         }
@@ -708,7 +705,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
                 SDL_Rect tam2 = Plane.getPos();
                 if (fn == false && CheckCollision(tam1, tam2) == true)
                 {
-                    score += 100;
+                    score += SCORE_FINISH_LINE;
                     fn = true;
                 }
             }
@@ -742,7 +739,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
                     if (background.y > Level_Height - Height) background.y = Level_Height - Height;
                 }
                 update();
-                sinh(2 + realTime / 30000, 1 + realTime / 60000, realTime / 60000);
+                sinh(2 + realTime / SINH_TIME_DIV_30K, 1 + realTime / SINH_TIME_DIV_60K, realTime / SINH_TIME_DIV_60K);
                 
                 // Update and handle laser collision for ability 1 (single laser)
                 int i = 0;
@@ -766,7 +763,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
                             EnemyPlane[j].hp -= Lasers1[i].getDamage();
                             if (EnemyPlane[j].hp <= 0)
                             {
-                                score += 200;
+                                score += SCORE_LASER_KILL;
                             }
                             Lasers1.erase(Lasers1.begin() + i);
                             hit = true;
@@ -782,7 +779,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
                                 EnemyPlane2[j].hp -= Lasers1[i].getDamage();
                                 if (EnemyPlane2[j].hp <= 0)
                                 {
-                                    score += 200;
+                                    score += SCORE_LASER_KILL;
                                 }
                                 Lasers1.erase(Lasers1.begin() + i);
                                 hit = true;
@@ -814,7 +811,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
                             EnemyPlane[j].hp -= Lasers2[i].getDamage();
                             if (EnemyPlane[j].hp <= 0)
                             {
-                                score += 200;
+                                score += SCORE_LASER_KILL;
                             }
                             Lasers2.erase(Lasers2.begin() + i);
                             hit = true;
@@ -830,7 +827,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
                                 EnemyPlane2[j].hp -= Lasers2[i].getDamage();
                                 if (EnemyPlane2[j].hp <= 0)
                                 {
-                                    score += 200;
+                                    score += SCORE_LASER_KILL;
                                 }
                                 Lasers2.erase(Lasers2.begin() + i);
                                 hit = true;
@@ -882,7 +879,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
             // Display bullet info and recovery timer
             stringstream bulletSs;
             Uint32 timeSinceRecovery = countTime - Plane.recoveryTime;
-            Uint32 timeUntilRecovery = (timeSinceRecovery >= 30000) ? 0 : (30000 - timeSinceRecovery) / 1000;
+            Uint32 timeUntilRecovery = (timeSinceRecovery >= PLANE_RECOVERY_MS) ? 0 : (PLANE_RECOVERY_MS - timeSinceRecovery) / 1000;
             
             bulletSs << "Bullets: " << Plane.bulletCount << "/" << Plane.maxBullets << " | Recovery: " << timeUntilRecovery << "s";
             
@@ -896,7 +893,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
             if (ability1CooldownRemaining > 0 || ability2CooldownRemaining > 0)
             {
                 stringstream abilitySs;
-                SDL_Color abilityColor = {100, 200, 255};
+                SDL_Color abilityColor = {COLOR_ABILITY_R, COLOR_ABILITY_G, COLOR_ABILITY_B};
                 
                 if (ability1CooldownRemaining > 0)
                     abilitySs << "X(Laser1):" << ability1CooldownRemaining << "s";
@@ -908,15 +905,15 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
                 }
                 
                 BulletInfo.loadfromrenderedtext(gRenderer, gFont, abilitySs.str().c_str(), abilityColor);
-                BulletInfo.render(gRenderer, 0, Point.getHeight() + Time.getHeight() + 35);
+                BulletInfo.render(gRenderer, 0, Point.getHeight() + Time.getHeight() + ABILITY_UI_OFFSET_Y);
             }
             
             // Render No Ammo popup if active (within 1 second)
-            if (Plane.lastNoAmmoTime > 0 && (countTime - Plane.lastNoAmmoTime) < 1000)
+            if (Plane.lastNoAmmoTime > 0 && (countTime - Plane.lastNoAmmoTime) < NO_AMMO_POPUP_MS)
             {
                 SDL_Color redColor = {255, 0, 0, 255};
                 NoAmmoPopup.loadfromrenderedtext(gRenderer, gFont, "No Ammo!", redColor);
-                NoAmmoPopup.render(gRenderer, 30, 100);
+                NoAmmoPopup.render(gRenderer, NO_AMMO_POPUP_X, NO_AMMO_POPUP_Y);
             }
             
             Plane.render(gRenderer, gFont, MBullet);
@@ -957,7 +954,7 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
                 }
                 res.push_back({score, realTime});
                 sort(res.begin(), res.end(), dk);
-                if (res.size() > 10) res.resize(10);
+                if (res.size() > TOP_SCORES_COUNT) res.resize(TOP_SCORES_COUNT);
 
                 ofstream f2;
                 f2.open("Result.txt");
@@ -975,10 +972,10 @@ void xuly(int &check_background, SDL_Window *&gWindow, SDL_Renderer *&gRenderer,
             PressB.render(gRenderer, (Width / 2 + PressB.getWidth() / 2), Height - PressB.getHeight());
         }
 
-        if (tam1 / 10 > timing)
+        if (tam1 / TIMING_DIV > timing)
         {
             Exp(gRenderer);
-            timing = tam1 / (10);
+            timing = tam1 / TIMING_DIV;
         }
         SDL_RenderPresent(gRenderer);
 
