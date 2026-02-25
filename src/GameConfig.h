@@ -1,143 +1,204 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-/*
- * ============================================================
- * FILE CẤU HÌNH GAME - Chỉnh các số tại đây để tùy chỉnh game
- * ============================================================
- */
+#include <SDL.h>
+#include <SDL_ttf.h>
 
-// ---------- Màn hình & Level ----------
-const int Width          = 1024;
-const int Height         = 520;
-const int Level_Width    = 1024;
-const int Level_Height   = 4023;
-const int FPS            = 1000 / 60;
 
-// ---------- Kích thước sprite (pixel) ----------
-const int Bullet_w       = 5;
-const int Bullet_h       = 13;
-const int Plane_w        = 50;
-const int Plane_h        = 60;
-const int Plane2_w       = 85;
-const int Plane2_h       = 90;
-const int Rocket_w       = 20;
-const int Rocket_h       = 47;
-const int hp_w           = 30;
-const int hp_h           = 31;
-const int Explosion_w    = 512;
-const int Explosion_h    = 512;
+constexpr int MS_PER_SEC      = 1000;
+constexpr int SEC_PER_MIN     = 60;
+constexpr int FPS             = 1000 / 60;       // 60 FPS chuẩn
+constexpr int SCREEN_TICKS_PER_FRAME = 1000 / FPS;
 
-// ---------- Spawn / random (sinh địch) ----------
-const int max1           = 100;
-const int min1           = 1;
+constexpr int Width           = 1024;      // Chiều rộng màn hình
+constexpr int Height          = 520;       // Chiều cao màn hình
+constexpr int Level_Width     = 1024;
+constexpr int Level_Height    = 4023;
 
-// ---------- Máy bay phe ta ----------
-const int PLANE_MAX_SPEED_X     = 3;    // tốc độ tối đa trái-phải (pixel/frame)
-const int PLANE_MAX_SPEED_Y     = 2;    // tốc độ tối đa lên-xuống
-const int PLANE_HP              = 100;  // máu ban đầu
-const int PLANE_MAX_BULLETS     = 20;   // đạn tối đa
-const int PLANE_FIRE_DELAY_MS   = 100;  // khoảng cách giữa 2 viên đạn (ms)
-const int PLANE_BULLET_REGEN_MS = 2500; // mỗi 2.5s hồi 1 viên đạn
-const int PLANE_RECOVERY_MS     = 30000;// mỗi 30s hồi 50% đạn + tăng max
-const int PLANE_RECOVERY_BONUS  = 10;   // mỗi 30s tăng max đạn thêm
-const int PLANE_ABILITY1_CD_MS  = 20000;// Laser đơn (X): cooldown 20s
-const int PLANE_ABILITY2_CD_MS  = 30000;// Laser ba (C): cooldown 30s
+// ==========================================
+// 2. MÀU SẮC & UI (Colors & Alpha)
+// ==========================================
+constexpr Uint8 COLOR_BLACK       = 0;
+constexpr Uint8 COLOR_WHITE       = 255;
+constexpr Uint8 ALPHA_OPAQUE      = 255;
+constexpr Uint8 ALPHA_DIM         = 60;
+constexpr Uint8 TEXT_ALPHA_NORMAL = 200;
+const SDL_Color TEXT_COLOR_HIGHLIGHT = {255, 155, 0, 255};
 
-// ---------- Laser ----------
-const int LASER1_DAMAGE_BASE    = 50;   // damage Laser đơn cơ bản
-const int LASER1_DAMAGE_PER_MIN = 10;   // +damage mỗi phút
-const int LASER2_DAMAGE_BASE    = 30;   // damage Laser ba cơ bản
-const int LASER2_DAMAGE_PER_MIN = 20;   // +damage mỗi phút
-const int LASER_DURATION_MS     = 500;  // thời gian tồn tại (ms)
-const int LASER1_W              = 10;   // chiều rộng Laser đơn
-const int LASER1_H              = 80;   // chiều cao Laser đơn
-const int LASER2_W              = 8;    // chiều rộng Laser ba (2 bên)
-const int LASER2_H              = 100;  // chiều cao Laser ba
-const int LASER_OFFSET_Y        = 55;   // vị trí laser phía trên máy bay
-const int LASER_SPREAD          = 15;   // khoảng cách 3 tia (pixel)
+// UI Font Sizes
+constexpr int FONT_SIZE_SMALL     = 13;
+constexpr int FONT_SIZE_LARGE     = 20;
 
-// ---------- Damage va chạm ----------
-const int DAMAGE_PLANE_HIT_ENEMY1  = 30;  // máy bay đụng địch loại 1
-const int DAMAGE_PLANE_HIT_ENEMY2  = 50;  // máy bay đụng địch loại 2
-const int DAMAGE_BULLET_HIT_ENEMY  = 10;  // đạn ta bắn trúng địch
-const int DAMAGE_BULLET_HIT_ROCKET = 20;  // đạn ta bắn trúng tên lửa
-const int DAMAGE_ROCKET_HIT_PLANE  = 50;  // tên lửa đụng máy bay
-const int DAMAGE_ENEMY_BULLET      = 10;  // đạn địch trúng máy bay
-const int HP_BOX_HEAL              = 20;  // hộp máu hồi
+// UI Ability Colors (RGB)
+constexpr int COLOR_ABILITY_R     = 100;
+constexpr int COLOR_ABILITY_G     = 200;
+constexpr int COLOR_ABILITY_B     = 255;
 
-// ---------- Điểm số ----------
-const int SCORE_FINISH_LINE = 100;  // qua vạch đích
-const int SCORE_ENEMY1      = 30;   // tiêu diệt địch loại 1
-const int SCORE_ENEMY2      = 50;   // tiêu diệt địch loại 2
-const int SCORE_LASER_KILL  = 200;  // tiêu diệt bằng laser
+// Popup Messages
+constexpr int NO_AMMO_POPUP_MS    = 1000;
+constexpr int NO_AMMO_POPUP_X     = 30;
+constexpr int NO_AMMO_POPUP_Y     = 100;
+constexpr int ABILITY_UI_OFFSET_Y = 35;
 
-// ---------- Spawn (sinh địch / tên lửa) ----------
-const int SPAWN_RAND_EXTRA   = 50;   // rand max khi sinh rocket (max1 + 50 - min1)
-const int SINH_TIME_DIV_30K  = 30000;// chia realTime cho spawn rate
-const int SINH_TIME_DIV_60K  = 60000;
+// ==========================================
+// 3. MENU CONSTANTS
+// ==========================================
+constexpr int MENU_MAX_ITEMS             = 5;
+constexpr int MENU_FONT_SIZE             = 40;
+constexpr int MENU_START_X               = 100;
+constexpr int MENU_START_Y               = 100;
+constexpr int MENU_SPACING               = 45;
+constexpr int MENU_HIGHLIGHT_OFFSET      = 15;
+constexpr float MENU_BG_TARGET_WIDTH_RATIO = 0.92f;
 
-// ---------- Rơi hộp máu (khi địch chết) ----------
-const int HP_DROP_RAND_MOD = 15;     // rand() % 15
-const int HP_DROP_RAND_VAL = 10;    // if (t1 == 10) rơi HP
+// ==========================================
+// 4. LEADERBOARD CONSTANTS
+// ==========================================
+constexpr int LB_MAX_ENTRIES      = 10;
+constexpr int LB_TOTAL_TEXT_ITEMS = 12;
+constexpr int LB_FONT_SIZE        = 40;
+constexpr int LB_START_X          = 50;
+constexpr int LB_START_Y          = 10;
+constexpr int LB_ITEM_SPACING     = 40;
+constexpr int LB_HEADER_SPACING   = 60;
+constexpr int LB_INDENT_X         = 100;
+constexpr int TOP_SCORES_COUNT    = 10;
 
-// ---------- UI / Font ----------
-const int FONT_SIZE_SMALL   = 13;   // font chữ nhỏ
-const int FONT_SIZE_LARGE   = 20;   // font chữ lớn
-const int NO_AMMO_POPUP_MS  = 1000; // thời gian hiện "No Ammo!" (ms)
-const int NO_AMMO_POPUP_X   = 30;
-const int NO_AMMO_POPUP_Y   = 100;
-const int ABILITY_UI_OFFSET_Y = 35;  // vị trí dòng chữ skill dưới BulletInfo
-const int TOP_SCORES_COUNT   = 10;   // số bản ghi high score lưu
-const int TIMING_DIV         = 10;   // chia cho timing (explosion update)
+// ==========================================
+// 5. TUTORIAL & SETTINGS CONSTANTS
+// ==========================================
+// Tutorial
+constexpr int TUT_FONT_SIZE       = 40;
+constexpr int TUT_START_X         = 50;
+constexpr int TUT_START_Y         = 10;
+constexpr int TUT_SPACING         = 45;
+constexpr int TUT_INDENT_X        = 100;
+constexpr int TUT_HEADER_SPACING  = 70;
 
-// ---------- Màu (R, G, B) - dùng cho UI ----------
-const int COLOR_ABILITY_R = 100;
-const int COLOR_ABILITY_G = 200;
-const int COLOR_ABILITY_B = 255;
+// Settings
+constexpr int SET_FONT_SIZE       = 40;
+constexpr int SET_START_X         = 200;
+constexpr int SET_START_Y         = 150;
+constexpr int SET_SPACING         = 70;
+constexpr int SET_MAIN_ITEMS      = 3;
+constexpr int SET_SUB_ITEMS       = 4;
 
-// ---------- BigBang (vụ nổ) ----------
-const int EXPLOSION_FRAME_W   = 128;   // chiều rộng 1 frame trong sprite
-const int EXPLOSION_FRAME_H   = 128;   // chiều cao 1 frame
-const int EXPLOSION_GRID      = 4;     // lưới 4x4 frame
-const int EXPLOSION_MAX_FRAME = 15;    // frame cuối (0..15)
+// ==========================================
+// 6. KÍCH THƯỚC SPRITE (Sprites)
+// ==========================================
+constexpr int Bullet_w        = 5;
+constexpr int Bullet_h        = 13;
+constexpr int Plane_w         = 50;
+constexpr int Plane_h         = 60;
+constexpr int Plane2_w        = 85;
+constexpr int Plane2_h        = 90;
+constexpr int Rocket_w        = 20;
+constexpr int Rocket_h        = 47;
+constexpr int hp_w            = 30;
+constexpr int hp_h            = 31;
+constexpr int Explosion_w     = 512;
+constexpr int Explosion_h     = 512;
 
-// ---------- Rocket (tên lửa) ----------
-const int ROCKET_HP         = 100;   // máu tên lửa
-const int ROCKET_VY_DIV     = 2;     // vy = vt / ROCKET_VY_DIV + ...
-const int ROCKET_DIFF_DIV   = 60000; // chia diff (ms) cho tốc độ tăng
-const int ROCKET_DIFF_MUL   = 2;     // nhân tốc độ theo thời gian
+// ==========================================
+// 7. GAMEPLAY: SPAWN & PHYSICS
+// ==========================================
+constexpr int max1            = 100;
+constexpr int min1            = 1;
+constexpr int SPAWN_RAND_EXTRA   = 50;
+constexpr int SINH_TIME_DIV_30K  = 30000;
+constexpr int SINH_TIME_DIV_60K  = 60000;
 
-// ---------- Đạn địch (EnemyBullet) ----------
-const int ENEMY_BULLET_SPEED_DIV = 3;    // td = vt / 3 + ...
-const int ENEMY_BULLET_DIFF_DIV  = 30000;// chia diff (ms)
+// Máy bay phe ta (Player)
+constexpr int PLANE_MAX_SPEED_X      = 3;
+constexpr int PLANE_MAX_SPEED_Y      = 2;
+constexpr int PLANE_HP               = 100;
+constexpr int PLANE_MAX_BULLETS      = 20;
+constexpr int PLANE_FIRE_DELAY_MS    = 100;
+constexpr int PLANE_BULLET_REGEN_MS  = 2500;
+constexpr int PLANE_RECOVERY_MS      = 30000;
+constexpr int PLANE_RECOVERY_BONUS   = 10;
+constexpr int PLANE_ABILITY1_CD_MS   = 20000;
+constexpr int PLANE_ABILITY2_CD_MS   = 30000;
 
-// ---------- Hộp máu (HP) ----------
-const int HP_BOX_SPEED_DIV = 4;  // tốc độ rơi = vt / 4
+// Laser Skills
+constexpr int LASER1_DAMAGE_BASE     = 50;
+constexpr int LASER1_DAMAGE_PER_MIN  = 10;
+constexpr int LASER2_DAMAGE_BASE     = 30;
+constexpr int LASER2_DAMAGE_PER_MIN  = 20;
+constexpr int LASER_DURATION_MS      = 500;
+constexpr int LASER1_W               = 10;
+constexpr int LASER1_H               = 80;
+constexpr int LASER2_W               = 8;
+constexpr int LASER2_H               = 100;
+constexpr int LASER_OFFSET_Y         = 55;
+constexpr int LASER_SPREAD           = 15;
+constexpr int LASER_COLOR_R          = 0;
+constexpr int LASER_COLOR_G          = 255;
+constexpr int LASER_COLOR_B          = 255;
 
-// ---------- Đạn phe ta (MyBullet) ----------
-const int MY_BULLET_SPEED_DIV = 2;  // tốc độ bay = vt / 2
+// ==========================================
+// 8. DAMAGE & SCORE SYSTEM
+// ==========================================
+// Damage
+constexpr int DAMAGE_PLANE_HIT_ENEMY1  = 30;
+constexpr int DAMAGE_PLANE_HIT_ENEMY2  = 50;
+constexpr int DAMAGE_BULLET_HIT_ENEMY  = 10;
+constexpr int DAMAGE_BULLET_HIT_ROCKET = 20;
+constexpr int DAMAGE_ROCKET_HIT_PLANE  = 50;
+constexpr int DAMAGE_ENEMY_BULLET      = 10;
+constexpr int HP_BOX_HEAL              = 20;
 
-// ---------- Địch loại 1 (EnemyPlane) ----------
-const int ENEMY1_HP           = 30;    // máu
-const int ENEMY1_VX_BASE      = 1;     // vx cơ bản
-const int ENEMY1_DIFF_DIV     = 50000; // diff / 50000 tăng vx
-const int ENEMY1_FIRE_INTERVAL= 200;   // bắn mỗi 200 pixel y
-const int ENEMY1_VY           = 1;     // tốc độ rơi (pixel/frame)
+// Score
+constexpr int SCORE_FINISH_LINE = 100;
+constexpr int SCORE_ENEMY1      = 30;
+constexpr int SCORE_ENEMY2      = 50;
+constexpr int SCORE_LASER_KILL  = 200;
 
-// ---------- Địch loại 2 (EnemyPlane2) ----------
-const int ENEMY2_HP            = 50;   // máu
-const int ENEMY2_VX_BASE       = 1;    // vx cơ bản
-const int ENEMY2_DIFF_DIV      = 50000;// diff / 50000 tăng vx
-const int ENEMY2_FIRE_INTERVAL_BASE = 200;  // khoảng bắn ban đầu (frame)
-const int ENEMY2_FIRE_INTERVAL_DEC  = 50;   // giảm mỗi 30s
-const int ENEMY2_FIRE_INTERVAL_DIV  = 30000;// mỗi 30s giảm
-const int ENEMY2_FIRE_INTERVAL_MIN  = 50;  // tối thiểu
-const int ENEMY2_ENTRY_SPEED   = 2;    // tốc độ xuất hiện (y += 2)
+// ==========================================
+// 9. ENTITY BEHAVIOR
+// ==========================================
+// Hộp máu rơi
+constexpr int HP_DROP_RAND_MOD = 15;
+constexpr int HP_DROP_RAND_VAL = 10;
+constexpr int HP_BOX_SPEED_DIV = 4;
 
-// ---------- Laser (màu vẽ) ----------
-const int LASER_COLOR_R = 0;
-const int LASER_COLOR_G = 255;
-const int LASER_COLOR_B = 255;
+// BigBang (Animation nổ)
+constexpr int EXPLOSION_FRAME_W   = 128;
+constexpr int EXPLOSION_FRAME_H   = 128;
+constexpr int EXPLOSION_GRID      = 4;
+constexpr int EXPLOSION_MAX_FRAME = 15;
+constexpr int TIMING_DIV          = 10;
 
+// Rocket (Tên lửa địch)
+constexpr int ROCKET_HP           = 100;
+constexpr int ROCKET_VY_DIV       = 2;
+constexpr int ROCKET_DIFF_DIV     = 60000;
+constexpr int ROCKET_DIFF_MUL     = 2;
+
+// Đạn địch (EnemyBullet)
+constexpr int ENEMY_BULLET_SPEED_DIV = 3;
+constexpr int ENEMY_BULLET_DIFF_DIV  = 30000;
+
+// Đạn ta (MyBullet)
+constexpr int MY_BULLET_SPEED_DIV    = 2;
+
+// Địch loại 1 (EnemyPlane)
+constexpr int ENEMY1_HP              = 30;
+constexpr int ENEMY1_VX_BASE         = 1;
+constexpr int ENEMY1_DIFF_DIV        = 50000;
+constexpr int ENEMY1_FIRE_INTERVAL   = 200;
+constexpr int ENEMY1_VY              = 1;
+
+// Địch loại 2 (EnemyPlane2)
+constexpr int ENEMY2_HP                 = 50;
+constexpr int ENEMY2_VX_BASE            = 1;
+constexpr int ENEMY2_DIFF_DIV           = 50000;
+constexpr int ENEMY2_FIRE_INTERVAL_BASE = 200;
+constexpr int ENEMY2_FIRE_INTERVAL_DEC  = 50;
+constexpr int ENEMY2_FIRE_INTERVAL_DIV  = 30000;
+constexpr int ENEMY2_FIRE_INTERVAL_MIN  = 50;
+constexpr int ENEMY2_ENTRY_SPEED        = 2;
+
+// Màu chữ mặc định
+const SDL_Color Color = {255, 255, 255};
 #endif
