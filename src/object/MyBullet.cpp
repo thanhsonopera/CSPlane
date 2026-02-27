@@ -1,5 +1,4 @@
 #include "MyBullet.h"
-#include "../GameConfig.h"
 
 MyBullet::MyBullet(int x_, int y_)
 {

@@ -1,5 +1,4 @@
 #include "MyPlane.h"
-#include "Constant.h"
 #include <SDL.h>
 #include <algorithm>
 

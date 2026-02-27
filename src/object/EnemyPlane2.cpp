@@ -1,7 +1,6 @@
 #include <sstream>
 #include <iostream>
 #include "EnemyPlane2.h"
-#include "../GameConfig.h"
 
 Enemy2::Enemy2(int x_, int y_, int diff)
 {

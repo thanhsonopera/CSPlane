@@ -1,4 +1,3 @@
-#include "Constant.h"
 #include "Laser.h"
 
 Laser::Laser(int sx, int sy, int dame, int w, int h, Uint32 dur, Uint32 currentTime, int svx, int svy)

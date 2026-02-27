@@ -13,7 +13,6 @@
 #include "close.h"
 #include "LTexture.h"
 #include "Menu.h"
-#include "Constant.h"
 #include "Play.h"
 using namespace std;
 

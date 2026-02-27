@@ -4,11 +4,9 @@
 #include <stdio.h>
 #include <vector>
 #include <sstream>
-// #include "Constant.h"
 #include "Object.h"
 #include "MyBullet.h"
 #include "BigBang.h"
-#include "../GameConfig.h"
 
 class MyPlane: public Object
 {
@@ -39,7 +37,6 @@ public:
     
     void loadfromfile(SDL_Renderer *&gRenderer, string path);
     void handle(SDL_Renderer *&gRenderer, SDL_Event &e, Uint32 currentTime);
-    /// Set vx,vy from current key state so plane only moves when keys are held (no drift)
     void setVelocityFromKeys(const Uint8 *keys);
     void move1();
     void render(SDL_Renderer *&gRenderer, TTF_Font *&gFont, LTexture &Bullet);

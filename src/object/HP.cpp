@@ -1,5 +1,4 @@
 #include "HP.h"
-#include "../GameConfig.h"
 
 HP::HP(int x_, int y_)
 {

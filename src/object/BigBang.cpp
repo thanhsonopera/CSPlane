@@ -1,5 +1,5 @@
 #include "BigBang.h"
-#include "../GameConfig.h"
+// #include "../GameConfig.h"
 
 BigBang::BigBang(int x_, int y_)
 {

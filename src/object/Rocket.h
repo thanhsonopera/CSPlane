@@ -4,7 +4,6 @@
 #include <sstream>
 #include <stdlib.h>
 #include "Object.h"
-#include "Constant.h"
 
 class Rocket: public Object
 {

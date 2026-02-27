@@ -1,5 +1,4 @@
 #include "EnemyBullet.h"
-#include "../GameConfig.h"
 #include <iostream>
 
 EnemyBullet::EnemyBullet(int x_, int y_, int diff)

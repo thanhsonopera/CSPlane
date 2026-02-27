@@ -1,5 +1,4 @@
 #include "Rocket.h"
-#include "../GameConfig.h"
 
 Rocket::Rocket(int x_, int y_, int diff)
 {
